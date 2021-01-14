@@ -1,0 +1,21 @@
+<div class="container mt-5">
+   <div class="row gx-5" *ngIf=entreprises>
+
+       <div class="col" >
+          <div class="p-3 border bg-light">
+            <h4>Nom de l'Entreprise : </h4> {{entreprises.nameEnterprise}}
+            <h4>Groupe : </h4> {{entreprises.groupAffiliated}}
+            <h4>Secteur d'activité: </h4> {{entreprises.sectorActivity}}
+            <h4>Région: </h4> {{entreprises.region}}
+            <h4>Chiffre d'affaires: </h4> {{entreprises.turnOver}}
+          </div>
+       </div>
+
+       <div class="col">
+          <div class="p-3 border bg-light">
+            <h4>Description : </h4> {{entreprises.description}}
+          </div>
+       </div>
+
+   </div>
+</div>

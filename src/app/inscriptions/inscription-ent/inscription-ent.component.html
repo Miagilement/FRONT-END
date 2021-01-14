@@ -1,0 +1,96 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="inscriptionsForm" (ngSubmit)="addEntreprise()">
+                <h1 class="shadow-sm text-info text-center">Créer votre compte entreprise</h1>
+                <div class="row mt-5">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="form-group col-8">
+                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">
+                            </div>
+                            <div class="form-group col-4">
+                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="form-group col">
+                                <input type="text" class="form-control" placeholder="Groupe" id="groupAffiliated" formControlName="groupAffiliated">
+                            </div>
+                            <div class="form-group col">
+                                <select class="form-control" id="sectorActivity" formControlName="sectorActivity">
+                                    <option selected>Secteur</option>
+                                    <option value="ERPs">ERPs</option>
+                                    <option value="conseils">Conseils</option>
+                                    <option value="BI">BI</option>
+                                    <option value="Réseaux informatiques">Réseaux informatiques</option>
+                                    <option>....</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control" placeholder="N° Siret?" id="siret" formControlName="siret">
+                            </div>
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control" placeholder="Chiffre d'affaires" id="turnOver" formControlName="turnOver">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <textarea class="form-control" placeholder="Description" rows="6" id="description" formControlName="description"></textarea>
+                        </div>
+                        <!--<div class="row mt-3">
+                            <div class="col-8">
+                                <input type="text" class="form-control" placeholder="Contacts" id="contacts" formControlName="contacts">
+                            </div>
+                        </div>
+                       <div class="form-group">
+                            <label for="exampleFormControlFile1">Logo</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" id="logo" formControlName="logo">
+                        </div>--> 
+                    </div>
+                    <div class="form-group col-4">
+                        <h1>Ma Région</h1>
+                        <select class="custom-select bg-light" size="13" id="region" formControlName="region">
+                            <option vaulue="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+                            <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+                            <option value="Bretagne">Bretagne</option>
+                            <option value="Centre-Val de Loire">Centre-Val de Loire</option>
+                            <option value="Corse">Corse</option>
+                            <option value="Grand Est">Grand Est</option>
+                            <option value="Hauts-de-France">Hauts-de-France</option>
+                            <option value="Île-de-France">Île-de-France</option>
+                            <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
+                            <option value="Occitanie">Occitanie</option>
+                            <option value="Pays de la Loire">Pays de la Loire</option>
+                            <option value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+                        </select>
+                    </div>
+                    <div class="col text-center mt-5">
+                        <button type="submit" [disabled]="!inscriptionsForm.valid"class="btn btn-info btn-lg">Créer ma fiche entreprise</button>
+                    </div>
+                    <div>{{info.message}}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- inscription submit ok message Modal -->
+<div class="modal fade" id="showMesssage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">
+            Votre inscription a bien été pris en compte
+          </h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [routerLink]="['/home']" class="btn btn-success" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
