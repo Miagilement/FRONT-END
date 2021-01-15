@@ -47,7 +47,7 @@
                        <div class="form-group">
                             <label for="exampleFormControlFile1">Logo</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" id="logo" formControlName="logo">
-                        </div>--> 
+                        </div>-->
                     </div>
                     <div class="form-group col-4">
                         <h1>Ma Région</h1>
@@ -69,7 +69,7 @@
                     <div class="col text-center mt-5">
                         <button type="submit" [disabled]="!inscriptionsForm.valid"class="btn btn-info btn-lg">Créer ma fiche entreprise</button>
                     </div>
-                    <div>{{info.message}}</div>
+                    <p class="text-danger">{{errorMessage}}</p>
                 </div>
             </form>
         </div>
@@ -93,4 +93,3 @@
       </div>
     </div>
   </div>
- 

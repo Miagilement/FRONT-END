@@ -15,6 +15,8 @@ export class InscriptionEntComponent implements OnInit {
 
   entreprise : Entreprise[]=[];
   info : BaseResVO;
+  errorMessage : any;
+
   constructor(
     private fb : FormBuilder,
     private entrepriseService : EntrepriseService
@@ -34,13 +36,30 @@ export class InscriptionEntComponent implements OnInit {
       description: ['', Validators.required],
       siret: ['', Validators.required]
     });
-//la méthode utiliser pour ajouter une nouvelle entreprise via le formulaire d'inscription. 
+//la méthode utiliser pour ajouter une nouvelle entreprise via le formulaire d'inscription.
 //On fait appel au service addEntrprise qui se trouve dans service.
     addEntreprise():void{
       this.entrepriseService.addEntreprise(this.inscriptionsForm.value)
-      .subscribe(baseResVO =>  {this.entreprise.push(<Entreprise>baseResVO.data)});
-      this.resetInscriptionForm();
-      $('#showMesssage').modal('show');
+      .subscribe(baseResVO =>
+        {
+          this.info = baseResVO;
+          switch (this.info.code){
+            case 0:
+              this.entreprise.push(<Entreprise> this.info.data);
+              this.resetInscriptionForm();
+              $('#showMesssage').modal('show');
+            case 2:
+              this.errorMessage = this.info.data;
+            case 6:
+              this.errorMessage = this.info.data;
+          }
+        }
+
+      );
+
+
+
+      // console.log(this.info.code);
     }
 //la méthode resetInscriptionForm permet d'effacer le contenu des champ après l'envoi des données.
 //on fait appel à cette méthode dans le addEntreprise.
