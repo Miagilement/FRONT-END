@@ -5,14 +5,18 @@ import { InscriptionEntComponent } from './inscriptions/inscription-ent/inscript
 import { InscriptionProfilComponent } from './inscriptions/inscription-profil/inscription-profil.component';
 import {CompanySheetComponent} from "./companySheets/company-sheet/company-sheet.component";
 import {AllCompanySheetComponent} from "./companySheets/all-company-sheet/all-company-sheet.component";
+import {ConnexionComponent} from "./connexion/connexion.component";
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
+  {path : 'connexion', component:ConnexionComponent},
   {path:'inscriptionEnt', component:InscriptionEntComponent},
+  {path:'inscriptionProf', component:InscriptionProfilComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path:'companySheet', component:CompanySheetComponent},
   {path:'allCompanySheet', component:AllCompanySheetComponent},
   { path: '**', redirectTo: 'home' }
+  
 ];
 
 @NgModule({

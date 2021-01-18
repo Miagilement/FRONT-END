@@ -11,6 +11,7 @@ import { InscriptionProfilComponent } from './inscriptions/inscription-profil/in
 import { InscriptionEntComponent } from './inscriptions/inscription-ent/inscription-ent.component';
 import { CompanySheetComponent } from './companySheets/company-sheet/company-sheet.component';
 import { AllCompanySheetComponent } from './companySheets/all-company-sheet/all-company-sheet.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AllCompanySheetComponent } from './companySheets/all-company-sheet/all-
     InscriptionProfilComponent,
     InscriptionEntComponent,
     CompanySheetComponent,
+    ConnexionComponent,
     AllCompanySheetComponent
   ],
   imports: [
