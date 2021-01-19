@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-connexion',
@@ -8,14 +7,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class ConnexionComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
   lienEnt(): void {
-     console.log("helloWorld");
-     
+    console.log("helloWorld");
+
   }
 
 }

@@ -1,5 +1,6 @@
 export class Entreprise {
     uid:string;
+    email:string;
     nameEnterprise: string;
     password: string;
     groupAffiliated: string;

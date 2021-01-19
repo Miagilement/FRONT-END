@@ -25,7 +25,7 @@ export class EntrepriseService {
 //la méthode getEntrepriseById permet de récuper l'ensemble des données qui concerne une entreprise.
   getEntrepriseById(id: string):Observable<BaseResVO>{
     const url = `${"/api/info/enterprise/find-by-id"}/${id}`;
-    return this.http.get<BaseResVO>(url)
+    return this.http.post<BaseResVO>(url,null)
     .pipe(tap(_=>console.log(`detail Entreprise avec id=${id}`)));
   }
 //la méthode addEntreprise permet de rajouter une entreprise.
@@ -35,7 +35,7 @@ export class EntrepriseService {
     return this.http.post<BaseResVO>("/api/user/enterprise/register", enterpriseRegisterReqVO, this.httpOptions)
     .pipe(tap((baseResVO:BaseResVO) => console.log(baseResVO)));
   }
-//code pas encore utiliser 
+//code pas encore utiliser
   /*updateEntreprise(entreprise : Entreprise): Observable<any>{
     const id = typeof entreprise === 'string'?entreprise:entreprise.uid;
     const url = `${"/api/user/enterprise/register"}/${id}`;
