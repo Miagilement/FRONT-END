@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header text-center">Connectez vous à votre espace personnel</div>
                 <div class="card-body">
-                    <form action="" method="">
+                    <form [formGroup]="connexionUserForm" action="" method="" >
                         <div class="row">
                             <div class="col-12">
                                 <div class="row">
@@ -12,7 +12,7 @@
                                         Votre adresse mail
                                     </label>
                                     <div class="col-md-6">
-                                        <input type="text" id="email_address" class="form-control" name="email-address"
+                                        <input type="text" id="userEmail" class="form-control" name="email-address" formControlName="userEmail"
                                             required autofocus>
                                     </div>
                                 </div>
@@ -21,7 +21,7 @@
                                         Votre mot de passe
                                     </label>
                                     <div class="col-md-6">
-                                        <input type="password" id="password" class="form-control" name="password"
+                                        <input type="password" id="userPassword" class="form-control" name="password" formControlName="userPassword"
                                             required>
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-info btn-lg">
+                                    <button type="submit" class="btn btn-info btn-lg" (click)="onSubmit()" [disabled]="!connexionUserForm.valid">
                                         Connexion
                                     </button>
                                 </div><br>
