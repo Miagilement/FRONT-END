@@ -11,7 +11,15 @@ import { InscriptionProfilComponent } from './inscriptions/inscription-profil/in
 import { InscriptionEntComponent } from './inscriptions/inscription-ent/inscription-ent.component';
 import { CompanySheetComponent } from './companySheets/company-sheet/company-sheet.component';
 import { AllCompanySheetComponent } from './companySheets/all-company-sheet/all-company-sheet.component';
-import { ConnexionComponent } from './connexion/connexion.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {ConnexionComponent} from "./connexion/connexion.component";
 
 
 @NgModule({
@@ -23,15 +31,23 @@ import { ConnexionComponent } from './connexion/connexion.component';
     InscriptionProfilComponent,
     InscriptionEntComponent,
     CompanySheetComponent,
-    ConnexionComponent,
-    AllCompanySheetComponent
+    AllCompanySheetComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatListModule,
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

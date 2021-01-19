@@ -15,8 +15,8 @@ export class ConnexionComponent implements OnInit {
   }
 
   lienEnt(): void {
-     console.log("helloWorld");
-     
+    console.log("helloWorld");
+
   }
 
   //récupération et traitement des données saisies par l'utilisateur.
