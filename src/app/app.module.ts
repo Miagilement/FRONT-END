@@ -20,6 +20,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ConnexionComponent} from "./connexion/connexion.component";
+import { ForumHomeComponent } from './forum/forum-home/forum-home.component';
+import { ForumDetailsComponent } from './forum/forum-details/forum-details.component';
+import { ForumNewComponent } from './forum/forum-new/forum-new.component';
 
 
 @NgModule({
@@ -33,6 +36,10 @@ import {ConnexionComponent} from "./connexion/connexion.component";
     CompanySheetComponent,
     AllCompanySheetComponent,
     ConnexionComponent
+    AllCompanySheetComponent,
+    ForumHomeComponent,
+    ForumDetailsComponent,
+    ForumNewComponent
   ],
   imports: [
     BrowserModule,

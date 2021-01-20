@@ -5,6 +5,9 @@ import { InscriptionEntComponent } from './inscriptions/inscription-ent/inscript
 import { InscriptionProfilComponent } from './inscriptions/inscription-profil/inscription-profil.component';
 import {CompanySheetComponent} from "./companySheets/company-sheet/company-sheet.component";
 import {AllCompanySheetComponent} from "./companySheets/all-company-sheet/all-company-sheet.component";
+import {ForumHomeComponent} from "./forum/forum-home/forum-home.component";
+import {ForumDetailsComponent} from "./forum/forum-details/forum-details.component";
+import {ForumNewComponent} from "./forum/forum-new/forum-new.component";
 import {ConnexionComponent} from "./connexion/connexion.component";
 
 const routes: Routes = [
@@ -15,8 +18,12 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path:'companySheet', component:CompanySheetComponent},
   {path:'allCompanySheet', component:AllCompanySheetComponent},
+  {path:'forum', component:ForumHomeComponent},
+  {path:'forumDetails', component:ForumDetailsComponent},
+  {path:'forumNew', component:ForumNewComponent},
   { path: '**', redirectTo: 'home' }
-  
+
+
 ];
 
 @NgModule({
