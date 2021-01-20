@@ -35,7 +35,7 @@ import { ForumNewComponent } from './forum/forum-new/forum-new.component';
     InscriptionEntComponent,
     CompanySheetComponent,
     AllCompanySheetComponent,
-    ConnexionComponent
+    ConnexionComponent,
     AllCompanySheetComponent,
     ForumHomeComponent,
     ForumDetailsComponent,
