@@ -26,6 +26,11 @@ export class InscriptionEntComponent implements OnInit {
   conditionSelected: AbstractControl;
   listRegion: Region = new Region();
 
+  constructor(
+    private fb: FormBuilder,
+    private entrepriseService: EntrepriseService
+  ) {
+  }
 
 //récupération et traitement des données saisies par l'utilisateur.
   inscriptionsForm = this.fb.group({
@@ -44,11 +49,6 @@ export class InscriptionEntComponent implements OnInit {
     {validator: Validators.compose([matchingPassword(), conditionSelected()])}
   );
 
-  constructor(
-    private fb: FormBuilder,
-    private entrepriseService: EntrepriseService
-  ) {
-  }
 
   ngOnInit(): void {
     this.pswConfirm = this.inscriptionsForm.controls["pswConfirm"];
