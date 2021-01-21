@@ -16,18 +16,22 @@ export class EntrepriseService {
   httpOptions ={
     headers : new HttpHeaders({'Content-Type':'application/json'})
   };
-  //on import un http pour pouvoir l'utiliser dans nos méthodes.
+
+//on import un http pour pouvoir l'utiliser dans nos méthodes.
   constructor(private http:HttpClient) { }
+
 //la méthode getEntreprise qui permet de récuperer la totalité des entreprises inscrit.
   getEntreprise():Observable<BaseResVO>{
     return this.http.post<BaseResVO>("/api/info/enterprise/find-all-enterprise", null, this.httpOptions);
   }
+
 //la méthode getEntrepriseById permet de récuper l'ensemble des données qui concerne une entreprise.
   getEntrepriseById(id: string):Observable<BaseResVO>{
     const url = `${"/api/info/enterprise/find-by-id"}/${id}`;
     return this.http.post<BaseResVO>(url,null)
     .pipe(tap(_=>console.log(`detail Entreprise avec id=${id}`)));
   }
+  
 //la méthode addEntreprise permet de rajouter une entreprise.
   addEntreprise(entreprise : Entreprise): Observable<BaseResVO>{
     let enterpriseRegisterReqVO = new EnterpriseRegisterReqVO(entreprise);
