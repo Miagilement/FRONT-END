@@ -55,7 +55,7 @@
                   <div class="form-group col-4">
                     <mat-form-field appearance="legacy" class="fill-width-class">
                       <mat-label>Groupe(facultatif)</mat-label>
-                      <input id="groupAffiliated" matInput
+                      <input formControlName="groupAffiliated" id="groupAffiliated" matInput
                              placeholder="Groupe"
                              type="text">
                     </mat-form-field>
@@ -67,6 +67,11 @@
                       <mat-label>Mot de passe</mat-label>
                       <input [type]="hide ? 'password' : 'text'" formControlName="password" id="password"
                              matInput placeholder="Mot de passe">
+                      <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                              [attr.aria-pressed]="hide"
+                              mat-icon-button matSuffix>
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
                       <mat-hint>* Le mot de passe doit compter entre 6 et 16 caractères</mat-hint>
                     </mat-form-field>
                   </div>
