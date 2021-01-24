@@ -23,7 +23,7 @@ import {ConnexionComponent} from "./connexion/connexion.component";
 import { ForumHomeComponent } from './forum/forum-home/forum-home.component';
 import { ForumDetailsComponent } from './forum/forum-details/forum-details.component';
 import { ForumNewComponent } from './forum/forum-new/forum-new.component';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import { ForumNewComponent } from './forum/forum-new/forum-new.component';
     MatSelectModule,
     MatListModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
