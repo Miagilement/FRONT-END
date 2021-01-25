@@ -3,11 +3,12 @@
   <span class="badge rounded-pill btn-lg">Forum</span>
 </h1>
 <br><br>
+<h2 type="button" class="plus col-sm-2" [routerLink]="['/home']" > Nouveau sujet <img [src]="cheminPlus" style="height: 70px"/> </h2>
 <div class="container p-3 my-3">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center border-0" *ngFor="let forumSubject of forumSubjects">
+        <li class="list-group-item d-flex justify-content-between align-items-center border-0 " *ngFor="let forumSubject of forumSubjects ">
           <div class="card col-sm-9">
-            <div class="card-body">
+            <div class="card-body" type = "button" [routerLink]="['/home']">
               <div class="row">
                 <h5 class="card-title col-sm-2">{{forumSubject.authorId}} </h5>
                 <p class="card-text col-sm-8">{{forumSubject.title}}</p>

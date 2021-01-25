@@ -15,7 +15,7 @@ import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 })
 export class InscriptionProfilComponent implements OnInit {
 
-  profil: particulier[] = []
+  profile: particulier[] = []
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -53,7 +53,7 @@ export class InscriptionProfilComponent implements OnInit {
           console.log(this.info.code);
           switch (this.info.code) {
             case 0:
-              this.profil.push(<particulier>this.info.data);
+              this.profile.push(<particulier>this.info.data);
               this.resetInscriptionForm();
               $('#showMesssage').modal('show');
             case 2:

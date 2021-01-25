@@ -1,0 +1,27 @@
+/* Général ------------------------------------------------------------------------------------- */
+body, p, legend, label, input {
+    font: normal 18pt verdana, helvetica, sans-serif;
+}
+
+fieldset {
+    padding: 12px;
+    border: 4px black solid;
+}
+legend {
+    font-weight: bold;
+    color: black;
+}
+
+/* Forms --------------------------------------------------------------------------------------- */
+form input {
+    margin: 3px 3px 0px 0px;
+    border: 1px #999 solid;
+}
+#text{
+    height: 500px;
+}
+
+button{
+    margin: 15px 15px 0px 0px;
+    width: 300px;
+}
