@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 
-import {Entreprise} from 'src/app/interfaces/entreprise';
-import {EntrepriseService} from 'src/app/services/entreprise.service';
+import {Enterprise} from 'src/app/interfaces/Enterprise';
+import {EnterpriseService} from 'src/app/services/enterprise.service';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {Region} from "../../interfaces/Region";
@@ -16,7 +16,7 @@ import {conditionSelected} from 'src/app/validator/conditionValidator';
 })
 export class InscriptionEntComponent implements OnInit {
 
-  entreprise: Entreprise[] = [];
+  entreprise: Enterprise[] = [];
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -28,7 +28,7 @@ export class InscriptionEntComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private entrepriseService: EntrepriseService
+    private entrepriseService: EnterpriseService
   ) {
   }
 
@@ -66,7 +66,7 @@ export class InscriptionEntComponent implements OnInit {
           this.info = baseResVO;
           switch (this.info.code) {
             case 0:
-              this.entreprise.push(<Entreprise>this.info.data);
+              this.entreprise.push(<Enterprise>this.info.data);
               this.resetInscriptionForm();
               $('#showMesssage').modal('show');
             case 2:

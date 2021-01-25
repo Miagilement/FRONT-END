@@ -8,7 +8,7 @@ import { BaseResVO } from '../interfaces/VO/res/BaseResVO';
   providedIn: 'root'
 })
 export class ForumService {
-  
+
   httpOptions ={
     headers : new HttpHeaders({'Content-Type':'application/json'})
   };
@@ -17,7 +17,10 @@ export class ForumService {
   getForumSubjects():Observable<BaseResVO>{
     return this.http.post<BaseResVO>("/api/forum/find-all-forum-subjects", null, this.httpOptions);
   }
+
   addSubject(forumSubject : ForumSubjects): Observable<ForumSubjects>{
     return null;
   }
+
+
 }

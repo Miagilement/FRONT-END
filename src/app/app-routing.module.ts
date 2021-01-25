@@ -9,6 +9,7 @@ import {ForumHomeComponent} from "./forum/forum-home/forum-home.component";
 import {ForumDetailsComponent} from "./forum/forum-details/forum-details.component";
 import {ForumNewComponent} from "./forum/forum-new/forum-new.component";
 import {ConnexionComponent} from "./connexion/connexion.component";
+import {UserProfileComponent} from "./user-profile/user-profile.component";
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'forum', component:ForumHomeComponent},
   {path:'forumDetails', component:ForumDetailsComponent},
   {path:'forumNew', component:ForumNewComponent},
+  {path:'user-profile', component:UserProfileComponent},
   { path: '**', redirectTo: 'home' }
 
 
