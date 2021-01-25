@@ -41,18 +41,9 @@
                       </mat-select>
                     </mat-form-field>
 
-                    <!--                              <select class="form-control" id="sectorActivity" formControlName="sectorActivity">-->
-                    <!--                                <option selected>Secteur</option>-->
-                    <!--                                <option value="ERPs">ERPs</option>-->
-                    <!--                                <option value="conseils">Conseils</option>-->
-                    <!--                                <option value="BI">BI</option>-->
-                    <!--                                <option value="Réseaux informatiques">Réseaux informatiques</option>-->
-                    <!--                                <option>....</option>-->
-                    <!--                              </select>-->
                   </div>
 
                   <div class="form-group col-8">
-                    <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
                     <mat-form-field appearance="legacy" class="fill-width-class">
                       <mat-label>Nom entreprise</mat-label>
                       <input formControlName="nameEnterprise" id="nameEnterprise" matInput
@@ -63,7 +54,7 @@
 
                   <div class="form-group col-4">
                     <mat-form-field appearance="legacy" class="fill-width-class">
-                      <mat-label>Groupe</mat-label>
+                      <mat-label>Groupe(facultatif)</mat-label>
                       <input formControlName="groupAffiliated" id="groupAffiliated" matInput
                              placeholder="Groupe"
                              type="text">
@@ -76,13 +67,13 @@
                       <mat-label>Mot de passe</mat-label>
                       <input [type]="hide ? 'password' : 'text'" formControlName="password" id="password"
                              matInput placeholder="Mot de passe">
-                      <!--                              <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"-->
-                      <!--                                      [attr.aria-pressed]="hide"-->
-                      <!--                                      mat-icon-button matSuffix>-->
-                      <!--                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
-                      <!--                              </button>-->
+                      <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                              [attr.aria-pressed]="hide"
+                              mat-icon-button matSuffix>
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                      <mat-hint>* Le mot de passe doit compter entre 6 et 16 caractères</mat-hint>
                     </mat-form-field>
-                    <!--                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">-->
                   </div>
 
 
@@ -93,22 +84,13 @@
                              placeholder="Mot de passe">
                       <mat-error *ngIf="pswConfirm.invalid">{{"Mot de passe est différent"}}</mat-error>
                     </mat-form-field>
-                    <!--                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">-->
+
                   </div>
 
 
                 </div>
-                <!--                      <div class="row mt-3">-->
-
-                <!--                        <div class="form-group col">-->
-                <!--                          <input class="form-control" formControlName="groupAffiliated" id="groupAffiliated" placeholder="Groupe"-->
-                <!--                                 type="text">-->
-                <!--                        </div>-->
-
-                <!--                      </div>-->
                 <div class="row mt-3">
                   <div class="form-group col-4">
-                    <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
                     <div>
                       <mat-form-field appearance="legacy" flex>
                         <mat-label>N° Siret</mat-label>
@@ -117,55 +99,34 @@
                                type="text">
                       </mat-form-field>
                     </div>
-                    <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
                     <div>
                       <mat-form-field appearance="legacy">
                         <mat-label>Chiffre d'affaires</mat-label>
                         <input formControlName="turnOver" id="turnOver" matInput
                                placeholder="Chiffre d'affaires"
                                type="text">
+                        <span matPrefix>€&nbsp;</span>
+                        <span matSuffix>(En milliers)</span>
                       </mat-form-field>
                     </div>
 
                   </div>
 
-                  <!--                        <div class="form-group col-6">-->
-                  <!--                          <input class="form-control" formControlName="siret" id="siret" placeholder="N° Siret?"-->
-                  <!--                                 type="text">-->
-                  <!--                        </div>-->
-                  <!--                        <div class="form-group col-6">-->
-                  <!--                          <input class="form-control" formControlName="turnOver" id="turnOver" placeholder="Chiffre d'affaires"-->
-                  <!--                                 type="text">-->
-                  <!--                        </div>-->
                 </div>
                 <div class="form-group mt-3">
-                  <!--                        <textarea class="form-control" formControlName="description" id="description"-->
-                  <!--                                  placeholder="Description"-->
-                  <!--                                  rows="6"></textarea>-->
 
                   <mat-form-field appearance="fill" class="fill-width-class">
                     <mat-label>Description</mat-label>
-                    <textarea formControlName="description" id="description" matInput placeholder="Description"
+                    <textarea formControlName="description" id="description" matInput placeholder="Veuillez introduire votre entreprise auprès des autres utilisateurs"
                               rows="6"></textarea>
+                    <mat-hint>* La description ne doit pas dépasser 300 caractères</mat-hint>
                   </mat-form-field>
 
                 </div>
-                <!--<div class="row mt-3">
-                    <div class="col-8">
-                        <input type="text" class="form-control" placeholder="Contacts" id="contacts" formControlName="contacts">
-                    </div>
-                </div>
-               <div class="form-group">
-                    <label for="exampleFormControlFile1">Logo</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" id="logo" formControlName="logo">
-                </div>-->
+
 
               </div>
               <div class="form-group col-4">
-                <!--                        <h1>Ma Région</h1>-->
-                <!--                        <select class="custom-select bg-light" size="13" id="region" formControlName="region">-->
-                <!--                            <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>-->
-                <!--                        </select>-->
                 <mat-form-field appearance="legacy" class="fill-width-class">
                   <mat-label>Ma région</mat-label>
                   <mat-select [multiple]="false" formControlName="region" id="region" size="40">

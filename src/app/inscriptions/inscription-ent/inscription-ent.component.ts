@@ -38,7 +38,7 @@ export class InscriptionEntComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       pswConfirm: ['', Validators.required],
-      groupAffiliated: ['', Validators.required],
+      groupAffiliated:[''],
       sectorActivity: ['', Validators.required],
       region: ['', Validators.required],
       turnOver: ['', Validators.required],
