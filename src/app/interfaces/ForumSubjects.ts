@@ -3,5 +3,6 @@ export class ForumSubjects {
     title : string;
     text : string;
     authorId : string;
-    datePost : string;
+    datePost : Date;
+    dateLastModified: Date;
 }

@@ -1,4 +1,4 @@
-export class Entreprise {
+export class Enterprise {
     uid:string;
     email:string;
     nameEnterprise: string;

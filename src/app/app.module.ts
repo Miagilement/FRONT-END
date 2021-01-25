@@ -23,6 +23,8 @@ import {ConnexionComponent} from "./connexion/connexion.component";
 import { ForumHomeComponent } from './forum/forum-home/forum-home.component';
 import { ForumDetailsComponent } from './forum/forum-details/forum-details.component';
 import { ForumNewComponent } from './forum/forum-new/forum-new.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
@@ -39,7 +41,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     AllCompanySheetComponent,
     ForumHomeComponent,
     ForumDetailsComponent,
-    ForumNewComponent
+    ForumNewComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProfilService } from './profil.service';
+import { EnterpriseService } from './enterprise.service';
 
-describe('ParticulierService', () => {
-  let service: ProfilService;
+describe('EntrepriseService', () => {
+  let service: EnterpriseService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ProfilService);
+    service = TestBed.inject(EnterpriseService);
   });
 
   it('should be created', () => {

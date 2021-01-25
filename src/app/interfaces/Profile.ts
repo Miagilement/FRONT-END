@@ -1,4 +1,4 @@
-export class particulier {
+export class profile {
     uid : string;
     userName : string;
     userYpe : string;
