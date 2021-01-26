@@ -21,7 +21,11 @@ export class ProfileService {
     console.groupCollapsed(particulierRegisterReqVO)
     return this.http.post<BaseResVO>("/api/user/particulier/register", particulierRegisterReqVO, this.httpOptions)
     .pipe(tap((baseResVO:BaseResVO) => console.log(baseResVO)));
-
   }
 
+  getProfileById(uid: string):Observable<BaseResVO>{
+    const url = `${"/api/info/particulier/find-by-id/{uid}"}/${uid}`;
+    return this.http.post<BaseResVO>(url,null)
+      .pipe(tap(_=>console.log(`detail Profile avec uid=${uid}`)));
+  }
 }

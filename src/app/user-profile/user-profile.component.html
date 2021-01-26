@@ -1,21 +1,21 @@
 <div class="container mt-5 " >
-  <div class="row ">
+  <div class="row " *ngIf=myProfile>
     <div class="col-8">
-      <h1>User name</h1>
+      <h1>User name <button type="button" class="btn btn-outline-success" style="position: absolute; right: 0;" [routerLink]="['/home']"> Modifier </button></h1>
       <hr/>
     </div>
   </div>
   <div class="col-4">
-    <h1>User Id : </h1>
+    <h1>User Id : </h1> {{myProfile.uid}}
   </div>
   <div class="col-4">
-    <h1>User email : </h1>
+    <h1>User email : </h1> {{myProfile.userEmail}}
   </div>
   <div class="col-4">
-    <h1>User name : </h1>
+    <h1>User name : </h1> {{myProfile.userName}}
   </div>
   <div class="col-4">
-    <h1>User type : </h1>
+    <h1>User type : </h1> {{myProfile.userType}}
   </div>
 
 </div>

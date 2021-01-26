@@ -1,7 +1,7 @@
 export class profile {
     uid : string;
     userName : string;
-    userYpe : string;
+    userType : string;
     userEmail : string;
     userPassword : string;
 }
