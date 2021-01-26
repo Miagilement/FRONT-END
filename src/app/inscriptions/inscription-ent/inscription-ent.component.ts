@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-
-import {Entreprise} from 'src/app/interfaces/entreprise';
-import {EntrepriseService} from 'src/app/services/entreprise.service';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {Region} from "../../interfaces/Region";
 import {matchingPassword} from "../../validator/pswValidator";
 import {conditionSelected} from 'src/app/validator/conditionValidator';
+import { Enterprise } from 'src/app/interfaces/enterprise';
+import { EnterpriseService } from 'src/app/services/enterprise.service';
 
 @Component({
   selector: 'app-inscription-ent',
@@ -16,7 +15,7 @@ import {conditionSelected} from 'src/app/validator/conditionValidator';
 })
 export class InscriptionEntComponent implements OnInit {
 
-  entreprise: Entreprise[] = [];
+  entreprise: Enterprise[] = [];
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -28,7 +27,7 @@ export class InscriptionEntComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private entrepriseService: EntrepriseService
+    private enterpriseService: EnterpriseService
   ) {
   }
 
@@ -58,15 +57,15 @@ export class InscriptionEntComponent implements OnInit {
 //la méthode utiliser pour ajouter une nouvelle entreprise via le formulaire d'inscription.
 
 //On fait appel au service addEntrprise qui se trouve dans service.
-  addEntreprise(): void {
+  addEnterprise(): void {
     this.loginWarningShow = false;
     this.paraDangerShow = false;
-    this.entrepriseService.addEntreprise(this.inscriptionsForm.value)
+    this.enterpriseService.addEnterprise(this.inscriptionsForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
           switch (this.info.code) {
             case 0:
-              this.entreprise.push(<Entreprise>this.info.data);
+              this.entreprise.push(<Enterprise>this.info.data);
               this.resetInscriptionForm();
               $('#showMesssage').modal('show');
             case 2:

@@ -1,156 +1,150 @@
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-12">
-          <form [formGroup]="inscriptionsForm">
-            <h1 class="shadow-sm text-info text-center">Créer votre compte entreprise</h1>
-            <div *ngIf="paraDangerShow">
-              <div *ngFor="let item of errorMessage" class="alert alert-danger">
-                {{item}}
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="inscriptionsForm">
+        <h1 class="shadow-sm text-info text-center">Créer votre compte entreprise</h1>
+        <div *ngIf="paraDangerShow">
+          <div *ngFor="let item of errorMessage" class="alert alert-danger">
+            {{item}}
+          </div>
+        </div>
+
+        <div *ngIf="loginWarningShow&&!paraDangerShow">
+          <div *ngFor="let item of errorMessage" class="alert alert-warning">
+            {{item}}<a href="add link to login here"> Cliquez pour se connecter</a>
+          </div>
+        </div>
+
+
+        <div class="row mt-5">
+          <div class="col-8">
+            <div class="row">
+              <div class="form-group col-8">
+                <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
+                <mat-form-field appearance="legacy" class="fill-width-class">
+                  <mat-label>Email entreprise</mat-label>
+                  <input formControlName="email" id="emailEnterprise" matInput placeholder="Nom entreprise">
+                </mat-form-field>
               </div>
-            </div>
 
-            <div *ngIf="loginWarningShow&&!paraDangerShow">
-              <div *ngFor="let item of errorMessage" class="alert alert-warning">
-                {{item}}<a href="add link to login here"> Cliquez pour se connecter</a>
+              <div class="form-group col-4">
+                <mat-form-field appearance="legacy" class="fill-width-class">
+                  <mat-label>Secteur</mat-label>
+                  <mat-select formControlName="sectorActivity" id="sectorActivity" size="6">
+                    <mat-option value="one">Secteur</mat-option>
+                    <mat-option value="ERPs">ERPs</mat-option>
+                    <mat-option value="conseils">Conseils</mat-option>
+                    <mat-option value="BI">BI</mat-option>
+                    <mat-option value="Réseaux informatiques">Réseaux informatiques</mat-option>
+                    <mat-option>....</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <!--                              <select class="form-control" id="sectorActivity" formControlName="sectorActivity">-->
+                <!--                                <option selected>Secteur</option>-->
+                <!--                                <option value="ERPs">ERPs</option>-->
+                <!--                                <option value="conseils">Conseils</option>-->
+                <!--                                <option value="BI">BI</option>-->
+                <!--                                <option value="Réseaux informatiques">Réseaux informatiques</option>-->
+                <!--                                <option>....</option>-->
+                <!--                              </select>-->
               </div>
+
+              <div class="form-group col-8">
+                <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
+                <mat-form-field appearance="legacy" class="fill-width-class">
+                  <mat-label>Nom entreprise</mat-label>
+                  <input formControlName="nameEnterprise" id="nameEnterprise" matInput placeholder="Nom entreprise"
+                    type="text">
+                </mat-form-field>
+              </div>
+
+              <div class="form-group col-4">
+                <mat-form-field appearance="legacy" class="fill-width-class">
+                  <mat-label>Groupe</mat-label>
+                  <input formControlName="groupAffiliated" id="groupAffiliated" matInput placeholder="Groupe"
+                    type="text">
+                </mat-form-field>
+              </div>
+
+
+              <div class="form-group col-8">
+                <mat-form-field appearance="legacy" class="fill-width-class">
+                  <mat-label>Mot de passe</mat-label>
+                  <input [type]="hide ? 'password' : 'text'" formControlName="password" id="password" matInput
+                    placeholder="Mot de passe">
+                  <!--                              <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"-->
+                  <!--                                      [attr.aria-pressed]="hide"-->
+                  <!--                                      mat-icon-button matSuffix>-->
+                  <!--                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+                  <!--                              </button>-->
+                </mat-form-field>
+                <!--                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">-->
+              </div>
+
+
+              <div class="form-group col-8">
+                <mat-form-field appearance="legacy" class="fill-width-class">
+                  <mat-label>Confirmer votre mot de passe</mat-label>
+                  <input [type]="'password'" formControlName="pswConfirm" id="pswConfirm" matInput
+                    placeholder="Mot de passe">
+                  <mat-error *ngIf="pswConfirm.invalid">{{"Mot de passe est différent"}}</mat-error>
+                </mat-form-field>
+                <!--                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">-->
+              </div>
+
+
             </div>
+            <!--                      <div class="row mt-3">-->
 
+            <!--                        <div class="form-group col">-->
+            <!--                          <input class="form-control" formControlName="groupAffiliated" id="groupAffiliated" placeholder="Groupe"-->
+            <!--                                 type="text">-->
+            <!--                        </div>-->
 
-            <div class="row mt-5">
-              <div class="col-8">
-                <div class="row">
-                  <div class="form-group col-8">
-                    <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
-                    <mat-form-field appearance="legacy" class="fill-width-class">
-                      <mat-label>Email entreprise</mat-label>
-                      <input formControlName="email" id="emailEnterprise" matInput
-                             placeholder="Nom entreprise">
-                    </mat-form-field>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <mat-form-field appearance="legacy" class="fill-width-class">
-                      <mat-label>Secteur</mat-label>
-                      <mat-select formControlName="sectorActivity" id="sectorActivity" size="6">
-                        <mat-option value="one">Secteur</mat-option>
-                        <mat-option value="ERPs">ERPs</mat-option>
-                        <mat-option value="conseils">Conseils</mat-option>
-                        <mat-option value="BI">BI</mat-option>
-                        <mat-option value="Réseaux informatiques">Réseaux informatiques</mat-option>
-                        <mat-option>....</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-
-                    <!--                              <select class="form-control" id="sectorActivity" formControlName="sectorActivity">-->
-                    <!--                                <option selected>Secteur</option>-->
-                    <!--                                <option value="ERPs">ERPs</option>-->
-                    <!--                                <option value="conseils">Conseils</option>-->
-                    <!--                                <option value="BI">BI</option>-->
-                    <!--                                <option value="Réseaux informatiques">Réseaux informatiques</option>-->
-                    <!--                                <option>....</option>-->
-                    <!--                              </select>-->
-                  </div>
-
-                  <div class="form-group col-8">
-                    <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
-                    <mat-form-field appearance="legacy" class="fill-width-class">
-                      <mat-label>Nom entreprise</mat-label>
-                      <input formControlName="nameEnterprise" id="nameEnterprise" matInput
-                             placeholder="Nom entreprise"
-                             type="text">
-                    </mat-form-field>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <mat-form-field appearance="legacy" class="fill-width-class">
-                      <mat-label>Groupe</mat-label>
-                      <input formControlName="groupAffiliated" id="groupAffiliated" matInput
-                             placeholder="Groupe"
-                             type="text">
-                    </mat-form-field>
-                  </div>
-
-
-                  <div class="form-group col-8">
-                    <mat-form-field appearance="legacy" class="fill-width-class">
-                      <mat-label>Mot de passe</mat-label>
-                      <input [type]="hide ? 'password' : 'text'" formControlName="password" id="password"
-                             matInput placeholder="Mot de passe">
-                      <!--                              <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"-->
-                      <!--                                      [attr.aria-pressed]="hide"-->
-                      <!--                                      mat-icon-button matSuffix>-->
-                      <!--                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
-                      <!--                              </button>-->
-                    </mat-form-field>
-                    <!--                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">-->
-                  </div>
-
-
-                  <div class="form-group col-8">
-                    <mat-form-field appearance="legacy" class="fill-width-class">
-                      <mat-label>Confirmer votre mot de passe</mat-label>
-                      <input [type]="'password'" formControlName="pswConfirm" id="pswConfirm" matInput
-                             placeholder="Mot de passe">
-                      <mat-error *ngIf="pswConfirm.invalid">{{"Mot de passe est différent"}}</mat-error>
-                    </mat-form-field>
-                    <!--                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">-->
-                  </div>
-
-
-                </div>
-                <!--                      <div class="row mt-3">-->
-
-                <!--                        <div class="form-group col">-->
-                <!--                          <input class="form-control" formControlName="groupAffiliated" id="groupAffiliated" placeholder="Groupe"-->
-                <!--                                 type="text">-->
-                <!--                        </div>-->
-
-                <!--                      </div>-->
-                <div class="row mt-3">
-                  <div class="form-group col-4">
-                    <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
-                    <div>
-                      <mat-form-field appearance="legacy" flex>
-                        <mat-label>N° Siret</mat-label>
-                        <input formControlName="siret" id="siret" matInput
-                               placeholder="N° Siret?"
-                               type="text">
-                      </mat-form-field>
-                    </div>
-                    <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
-                    <div>
-                      <mat-form-field appearance="legacy">
-                        <mat-label>Chiffre d'affaires</mat-label>
-                        <input formControlName="turnOver" id="turnOver" matInput
-                               placeholder="Chiffre d'affaires"
-                               type="text">
-                      </mat-form-field>
-                    </div>
-
-                  </div>
-
-                  <!--                        <div class="form-group col-6">-->
-                  <!--                          <input class="form-control" formControlName="siret" id="siret" placeholder="N° Siret?"-->
-                  <!--                                 type="text">-->
-                  <!--                        </div>-->
-                  <!--                        <div class="form-group col-6">-->
-                  <!--                          <input class="form-control" formControlName="turnOver" id="turnOver" placeholder="Chiffre d'affaires"-->
-                  <!--                                 type="text">-->
-                  <!--                        </div>-->
-                </div>
-                <div class="form-group mt-3">
-                  <!--                        <textarea class="form-control" formControlName="description" id="description"-->
-                  <!--                                  placeholder="Description"-->
-                  <!--                                  rows="6"></textarea>-->
-
-                  <mat-form-field appearance="fill" class="fill-width-class">
-                    <mat-label>Description</mat-label>
-                    <textarea formControlName="description" id="description" matInput placeholder="Description"
-                              rows="6"></textarea>
+            <!--                      </div>-->
+            <div class="row mt-3">
+              <div class="form-group col-4">
+                <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
+                <div>
+                  <mat-form-field appearance="legacy" flex>
+                    <mat-label>N° Siret</mat-label>
+                    <input formControlName="siret" id="siret" matInput placeholder="N° Siret?" type="text">
                   </mat-form-field>
-
                 </div>
-                <!--<div class="row mt-3">
+                <!--                                <input type="text" class="form-control" placeholder="Nom entreprise" id="nameEnterprise" formControlName="nameEnterprise">-->
+                <div>
+                  <mat-form-field appearance="legacy">
+                    <mat-label>Chiffre d'affaires</mat-label>
+                    <input formControlName="turnOver" id="turnOver" matInput placeholder="Chiffre d'affaires"
+                      type="text">
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+              <!--                        <div class="form-group col-6">-->
+              <!--                          <input class="form-control" formControlName="siret" id="siret" placeholder="N° Siret?"-->
+              <!--                                 type="text">-->
+              <!--                        </div>-->
+              <!--                        <div class="form-group col-6">-->
+              <!--                          <input class="form-control" formControlName="turnOver" id="turnOver" placeholder="Chiffre d'affaires"-->
+              <!--                                 type="text">-->
+              <!--                        </div>-->
+            </div>
+            <div class="form-group mt-3">
+              <!--                        <textarea class="form-control" formControlName="description" id="description"-->
+              <!--                                  placeholder="Description"-->
+              <!--                                  rows="6"></textarea>-->
+
+              <mat-form-field appearance="fill" class="fill-width-class">
+                <mat-label>Description</mat-label>
+                <textarea formControlName="description" id="description" matInput placeholder="Description"
+                  rows="6"></textarea>
+              </mat-form-field>
+
+            </div>
+            <!--<div class="row mt-3">
                     <div class="col-8">
                         <input type="text" class="form-control" placeholder="Contacts" id="contacts" formControlName="contacts">
                     </div>
@@ -160,60 +154,61 @@
                     <input type="file" class="form-control-file" id="exampleFormControlFile1" id="logo" formControlName="logo">
                 </div>-->
 
-              </div>
-              <div class="form-group col-4">
-                <!--                        <h1>Ma Région</h1>-->
-                <!--                        <select class="custom-select bg-light" size="13" id="region" formControlName="region">-->
-                <!--                            <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>-->
-                <!--                        </select>-->
-                <mat-form-field appearance="legacy" class="fill-width-class">
-                  <mat-label>Ma région</mat-label>
-                  <mat-select [multiple]="false" formControlName="region" id="region" size="40">
-                    <mat-option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
+          </div>
+          <div class="form-group col-4">
+            <!--                        <h1>Ma Région</h1>-->
+            <!--                        <select class="custom-select bg-light" size="13" id="region" formControlName="region">-->
+            <!--                            <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>-->
+            <!--                        </select>-->
+            <mat-form-field appearance="legacy" class="fill-width-class">
+              <mat-label>Ma région</mat-label>
+              <mat-select [multiple]="false" formControlName="region" id="region" size="40">
+                <mat-option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</mat-option>
+              </mat-select>
+            </mat-form-field>
 
 
-              </div>
+          </div>
 
-              <div class="form-group col-8">
-                <section class="example-section">
-                  <mat-checkbox class="example-margin" formControlName="conditionUser">Vous reconnaissez avoir lu et
-                    accepté
-                    <a>nos conditions générales d'utilisation</a>
-                  </mat-checkbox>
-                  <mat-error
-                    *ngIf="conditionSelected.invalid">{{"Vous devez accepter nos conditions d'utilisation"}}</mat-error>
-                </section>
-              </div>
+          <div class="form-group col-8">
+            <section class="example-section">
+              <mat-checkbox class="example-margin" formControlName="conditionUser">Vous reconnaissez avoir lu et
+                accepté
+                <a>nos conditions générales d'utilisation</a>
+              </mat-checkbox>
+              <mat-error *ngIf="conditionSelected.invalid">{{"Vous devez accepter nos conditions d'utilisation"}}
+              </mat-error>
+            </section>
+          </div>
 
 
-            </div>
-            <div class="col text-center mt-5">
-              <button (click)="addEntreprise()" [disabled]="!inscriptionsForm.valid" class="btn btn-info btn-lg"
-                      type="submit">Créer ma fiche entreprise
-              </button>
-            </div>
-
-          </form>
         </div>
+        <div class="col text-center mt-5">
+          <button (click)="addEnterprise()" [disabled]="!inscriptionsForm.valid" class="btn btn-info btn-lg"
+            type="submit">Créer ma fiche entreprise
+          </button>
+        </div>
+
+      </form>
     </div>
+  </div>
 </div>
 
 
 
 <!-- inscription submit ok message Modal -->
-<div class="modal fade" id="showMesssage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">
-            Votre inscription a bien été pris en compte
-          </h5>
-        </div>
-        <div class="modal-footer">
-          <button type="button" [routerLink]="['/home']" class="btn btn-success" data-dismiss="modal">Ok</button>
-        </div>
+<div class="modal fade" id="showMesssage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">
+          Votre inscription a bien été pris en compte
+        </h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" [routerLink]="['/home']" class="btn btn-success" data-dismiss="modal">Ok</button>
       </div>
     </div>
   </div>
+</div>

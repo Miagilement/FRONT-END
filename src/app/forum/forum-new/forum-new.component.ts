@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { ForumSubjects } from 'src/app/interfaces/ForumSubjects';
+import { ForumSubject } from 'src/app/interfaces/ForumSubject';
+import { BaseResVO } from 'src/app/interfaces/VO/res/BaseResVO';
 import { ForumService } from 'src/app/services/forum.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-forum-new',
@@ -10,7 +12,13 @@ import { ForumService } from 'src/app/services/forum.service';
   styleUrls: ['./forum-new.component.css']
 })
 export class ForumNewComponent implements OnInit {
-  subjects :ForumSubjects[] = [];
+
+  info: BaseResVO;
+  errorMessage: any;
+  hide = true;
+  loginWarningShow = false;
+  paraDangerShow = false;
+  subjects :ForumSubject[] = [];
   cheminPlus:any = "../../assets/plus.png";
   constructor(
     private fb: FormBuilder,
@@ -27,9 +35,13 @@ export class ForumNewComponent implements OnInit {
 
   //On fait appel au service addEntrprise qui se trouve dans service.
   addSubject(): void {
-    this.forumService.addSubject(this.newSubjectForm.value);
+    this.forumService.addSubject(this.newSubjectForm.value).subscribe((data) => console.log(data));
     console.log(this.newSubjectForm.value);
+    $('#showMesssage').modal('show');
   }
+
+
+  
   /*configuration permettant de faire fonctionner l'éditeur de texte. pour plus
   de renseignement sur l'API utiliser https://www.npmjs.com/package/@kolkov/angular-editor */
   editorConfig: AngularEditorConfig = {

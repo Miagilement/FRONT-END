@@ -1,4 +1,4 @@
-export class Entreprise {
+export interface Enterprise {
     uid:string;
     email:string;
     nameEnterprise: string;

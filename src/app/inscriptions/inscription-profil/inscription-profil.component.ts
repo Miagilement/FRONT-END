@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 // import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import {particulier} from 'src/app/interfaces/profil';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { ProfilService } from 'src/app/services/profil.service';
 import {matchingPassword} from "../../validator/pswValidator";
 import {conditionSelected} from 'src/app/validator/conditionValidator';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
+import { Profile } from 'src/app/interfaces/profile';
 
 @Component({
   selector: 'app-inscription-profil',
@@ -15,7 +15,7 @@ import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 })
 export class InscriptionProfilComponent implements OnInit {
 
-  profile: particulier[] = []
+  profile: Profile[] = []
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -53,7 +53,7 @@ export class InscriptionProfilComponent implements OnInit {
           console.log(this.info.code);
           switch (this.info.code) {
             case 0:
-              this.profile.push(<particulier>this.info.data);
+              this.profile.push(<Profile>this.info.data);
               this.resetInscriptionForm();
               $('#showMesssage').modal('show');
             case 2:
