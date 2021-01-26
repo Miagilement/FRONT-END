@@ -10,7 +10,7 @@ import {BaseResVO} from "../interfaces/VO/res/BaseResVO";
   providedIn: 'root'
 })
 export class EnterpriseService {
-  // private apiEnterpriseUrl = "localhost:8000/user/enterprise/register";
+  // private apiEntrepriseUrl = "localhost:8000/user/enterprise/register";
 
 
   httpOptions ={
@@ -21,26 +21,26 @@ export class EnterpriseService {
   constructor(private http:HttpClient) { }
 
 //la méthode getEntreprise qui permet de récuperer la totalité des entreprises inscrit.
-  getEnterprise():Observable<BaseResVO>{
+  getEntreprise():Observable<BaseResVO>{
     return this.http.post<BaseResVO>("/api/info/enterprise/find-all-enterprise", null, this.httpOptions);
   }
 
 //la méthode getEntrepriseById permet de récuper l'ensemble des données qui concerne une entreprise.
-  getEnterpriseById(id: string):Observable<BaseResVO>{
+  getEntrepriseById(id: string):Observable<BaseResVO>{
     const url = `${"/api/info/enterprise/find-by-id"}/${id}`;
     return this.http.post<BaseResVO>(url,null)
-    .pipe(tap(_=>console.log(`detail Enterprise avec id=${id}`)));
+    .pipe(tap(_=>console.log(`detail Entreprise avec id=${id}`)));
   }
 
 //la méthode addEntreprise permet de rajouter une entreprise.
-  addEnterprise(entreprise : Enterprise): Observable<BaseResVO>{
+  addEntreprise(entreprise : Enterprise): Observable<BaseResVO>{
     let enterpriseRegisterReqVO = new EnterpriseRegisterReqVO(entreprise);
     console.log(enterpriseRegisterReqVO)
     return this.http.post<BaseResVO>("/api/user/enterprise/register", enterpriseRegisterReqVO, this.httpOptions)
     .pipe(tap((baseResVO:BaseResVO) => console.log(baseResVO)));
   }
 //code pas encore utiliser
-  /*updateEnterprise(entreprise : Entreprise): Observable<any>{
+  /*updateEntreprise(entreprise : Entreprise): Observable<any>{
     const id = typeof entreprise === 'string'?entreprise:entreprise.uid;
     const url = `${"/api/user/enterprise/register"}/${id}`;
 
@@ -48,7 +48,7 @@ export class EnterpriseService {
     .pipe(tap(_=> console.log(`Entreprise avec l'id = ${entreprise.uid} a été mis à jour `)));
   }
 
-  deleteEnterprise(entreprise : Entreprise|string): Observable<Entreprise>{
+  deleteEntreprise(entreprise : Entreprise|string): Observable<Entreprise>{
     const id = typeof entreprise === 'string'?entreprise:entreprise.uid;
     const url = `${"/api/user/enterprise/register"}/${id}`;
     return this.http.delete<Entreprise>(url, this.httpOptions)
