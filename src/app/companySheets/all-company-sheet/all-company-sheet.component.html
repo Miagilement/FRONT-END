@@ -4,9 +4,10 @@
 </h1>
 <br><br>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let entreprise of entreprises">
-    {{entreprise.nameEnterprise}}
+  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let enterprise of enterprises">
+    {{enterprise.nameEnterprise}}
     <button type="button" class="btn btn-outline-success" [routerLink]="['/companySheet']"
-      [queryParams]="{uid:entreprise.uid}">A propos</button>
+      [queryParams]="{uid:enterprise.uid}">A propos</button>
   </li>
 </ul>
+
