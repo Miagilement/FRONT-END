@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {InscriptionProfilComponent} from './inscription-profil.component';
+import {InscriptionProfileComponent} from './inscription-profile.component';
 
 describe('InscriptionProfilComponent', () => {
-  let component: InscriptionProfilComponent;
-  let fixture: ComponentFixture<InscriptionProfilComponent>;
+  let component: InscriptionProfileComponent;
+  let fixture: ComponentFixture<InscriptionProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InscriptionProfilComponent]
+      declarations: [InscriptionProfileComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InscriptionProfilComponent);
+    fixture = TestBed.createComponent(InscriptionProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {HomeComponent} from './home/home.component';
-import {InscriptionProfilComponent} from './inscriptions/inscription-profil/inscription-profil.component';
+import {InscriptionProfileComponent} from './inscriptions/inscription-profile/inscription-profile.component';
 import {InscriptionEntComponent} from './inscriptions/inscription-ent/inscription-ent.component';
 import {CompanySheetComponent} from './companySheets/company-sheet/company-sheet.component';
 import {AllCompanySheetComponent} from './companySheets/all-company-sheet/all-company-sheet.component';
@@ -33,7 +33,7 @@ import {AngularEditorModule} from '@kolkov/angular-editor';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    InscriptionProfilComponent,
+    InscriptionProfileComponent,
     InscriptionEntComponent,
     CompanySheetComponent,
     AllCompanySheetComponent,

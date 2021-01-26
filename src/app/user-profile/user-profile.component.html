@@ -1,5 +1,5 @@
-<div class="container mt-5 ">
-  <div *ngIf=myProfile class="row ">
+<div class="container mt-5 " *ngIf=myProfile>
+  <div class="row ">
     <div class="col-8">
       <h1>User name
         <button [routerLink]="['/home']" class="btn btn-outline-success" style="position: absolute; right: 0;"
@@ -9,7 +9,7 @@
       <hr/>
     </div>
   </div>
-  <div class="col-4">
+  <div class="col-4" >
     <h1>User Id : </h1> {{myProfile.uid}}
   </div>
   <div class="col-4">

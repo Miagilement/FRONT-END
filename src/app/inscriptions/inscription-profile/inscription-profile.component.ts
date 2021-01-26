@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 // import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {ProfilService} from 'src/app/services/profil.service';
+import {ProfileService} from 'src/app/services/profile.service';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {Profile} from 'src/app/interfaces/profile';
 
 @Component({
   selector: 'app-inscription-profil',
-  templateUrl: './inscription-profil.component.html',
-  styleUrls: ['./inscription-profil.component.css']
+  templateUrl: './inscription-profile.component.html',
+  styleUrls: ['./inscription-profile.component.css']
 })
-export class InscriptionProfilComponent implements OnInit {
+export class InscriptionProfileComponent implements OnInit {
 
   profile: Profile[] = [];
   info: BaseResVO;
@@ -32,7 +32,7 @@ export class InscriptionProfilComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private profilService: ProfilService
+    private profileService: ProfileService
   ) {
   }
 
@@ -42,7 +42,7 @@ export class InscriptionProfilComponent implements OnInit {
   addProfil(): void {
     this.loginWarningShow = false;
     this.paraDangerShow = false;
-    this.profilService.addProfil(this.inscriptionsUserForm.value)
+    this.profileService.addProfil(this.inscriptionsUserForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
           console.log(this.info.code);
