@@ -1,8 +1,9 @@
-import { ForumSubject } from "../../ForumSubject";
+import {ForumSubject} from '../../ForumSubject';
 
-export class ForumRegisterReqVO{
+export class ForumRegisterReqVO {
 
   constructor(
-    private forumSubject:ForumSubject
-  ) {}
+    private forumSubject: ForumSubject
+  ) {
+  }
 }

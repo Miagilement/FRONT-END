@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { InscriptionEntComponent } from './inscription-ent.component';
+import {InscriptionEntComponent} from './inscription-ent.component';
 
 describe('InscriptionEntComponent', () => {
   let component: InscriptionEntComponent;
@@ -8,9 +8,9 @@ describe('InscriptionEntComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InscriptionEntComponent ]
+      declarations: [InscriptionEntComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

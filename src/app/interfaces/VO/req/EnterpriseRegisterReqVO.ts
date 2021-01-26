@@ -1,9 +1,10 @@
-import { Enterprise } from "../../enterprise";
+import {Enterprise} from '../../enterprise';
 
-export class EnterpriseRegisterReqVO{
+export class EnterpriseRegisterReqVO {
 
   constructor(
-    private enterprise:Enterprise
-  ) {}
+    private enterprise: Enterprise
+  ) {
+  }
 }
 

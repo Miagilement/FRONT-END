@@ -1,7 +1,11 @@
-<div class="container mt-5 " >
-  <div class="row " *ngIf=myProfile>
+<div class="container mt-5 ">
+  <div *ngIf=myProfile class="row ">
     <div class="col-8">
-      <h1>User name <button type="button" class="btn btn-outline-success" style="position: absolute; right: 0;" [routerLink]="['/home']"> Modifier </button></h1>
+      <h1>User name
+        <button [routerLink]="['/home']" class="btn btn-outline-success" style="position: absolute; right: 0;"
+                type="button"> Modifier
+        </button>
+      </h1>
       <hr/>
     </div>
   </div>

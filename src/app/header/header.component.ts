@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  cheminLogo:any = "../assets/logo.png";
-  constructor() { }
+  cheminLogo: any = '../assets/logo.png';
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

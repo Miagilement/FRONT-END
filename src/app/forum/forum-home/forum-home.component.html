@@ -3,19 +3,21 @@
   <span class="badge rounded-pill btn-lg">Forum</span>
 </h1>
 <br><br>
-<h2 type="button" class="plus col-sm-2" [routerLink]="['/forumNew']" > Nouveau sujet <img [src]="cheminPlus" style="height: 70px"/> </h2>
+<h2 [routerLink]="['/forumNew']" class="plus col-sm-2" type="button"> Nouveau sujet <img [src]="cheminPlus"
+                                                                                         style="height: 70px"/></h2>
 <div class="container p-3 my-3">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center border-0 " *ngFor="let forumSubject of forumSubjects ">
-          <div class="card col-sm-9">
-            <div class="card-body" type = "button" [routerLink]="['/home']">
-              <div class="ro  w">
-                <h5 class="card-title col-sm-2">{{forumSubject.authorId}} </h5>
-                <p class="card-text col-sm-8">{{forumSubject.title}}</p>
-                <p class ="col-sm-2">{{forumSubject.datePost}}</p>
-              </div>
-            </div>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let forumSubject of forumSubjects "
+        class="list-group-item d-flex justify-content-between align-items-center border-0 ">
+      <div class="card col-sm-9">
+        <div [routerLink]="['/home']" class="card-body" type="button">
+          <div class="ro  w">
+            <h5 class="card-title col-sm-2">{{forumSubject.authorId}} </h5>
+            <p class="card-text col-sm-8">{{forumSubject.title}}</p>
+            <p class="col-sm-2">{{forumSubject.datePost}}</p>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>

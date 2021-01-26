@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
-import {Region} from "../../interfaces/Region";
-import {matchingPassword} from "../../validator/pswValidator";
+import {Region} from '../../interfaces/Region';
+import {matchingPassword} from '../../validator/pswValidator';
 import {conditionSelected} from 'src/app/validator/conditionValidator';
-import { Enterprise } from 'src/app/interfaces/enterprise';
-import { EnterpriseService } from 'src/app/services/enterprise.service';
+import {Enterprise} from 'src/app/interfaces/enterprise';
+import {EnterpriseService} from 'src/app/services/enterprise.service';
 
 @Component({
   selector: 'app-inscription-ent',
@@ -24,13 +24,6 @@ export class InscriptionEntComponent implements OnInit {
   pswConfirm: AbstractControl;
   conditionSelected: AbstractControl;
   listRegion: Region = new Region();
-
-  constructor(
-    private fb: FormBuilder,
-    private enterpriseService: EnterpriseService
-  ) {
-  }
-
 //récupération et traitement des données saisies par l'utilisateur.
   inscriptionsForm = this.fb.group({
       nameEnterprise: ['', Validators.required],
@@ -48,10 +41,15 @@ export class InscriptionEntComponent implements OnInit {
     {validator: Validators.compose([matchingPassword(), conditionSelected()])}
   );
 
+  constructor(
+    private fb: FormBuilder,
+    private enterpriseService: EnterpriseService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.pswConfirm = this.inscriptionsForm.controls["pswConfirm"];
-    this.conditionSelected = this.inscriptionsForm.controls["conditionUser"]
+    this.pswConfirm = this.inscriptionsForm.controls['pswConfirm'];
+    this.conditionSelected = this.inscriptionsForm.controls['conditionUser'];
   }
 
 //la méthode utiliser pour ajouter une nouvelle entreprise via le formulaire d'inscription.
@@ -65,7 +63,7 @@ export class InscriptionEntComponent implements OnInit {
           this.info = baseResVO;
           switch (this.info.code) {
             case 0:
-              this.entreprise.push(<Enterprise>this.info.data);
+              this.entreprise.push(<Enterprise> this.info.data);
               this.resetInscriptionForm();
               $('#showMesssage').modal('show');
             case 2:
@@ -90,7 +88,7 @@ export class InscriptionEntComponent implements OnInit {
   }
 
   isPswConfirmValid(): boolean {
-    if (this.pswConfirm.hasError("pswMatchesConfirm")) {
+    if (this.pswConfirm.hasError('pswMatchesConfirm')) {
       console.log(this.pswConfirm.value);
       return true;
     }

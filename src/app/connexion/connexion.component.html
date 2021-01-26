@@ -1,65 +1,69 @@
 <div class="cotainer p-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">Connectez vous à votre espace personnel</div>
-                <div class="card-body">
-                    <form [formGroup]="connexionUserForm" action="" method="" >
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">
-                                        Votre adresse mail
-                                    </label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="userEmail" class="form-control" name="email-address" formControlName="userEmail"
-                                            required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group row mt-3">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">
-                                        Votre mot de passe
-                                    </label>
-                                    <div class="col-md-6">
-                                        <input type="password" id="userPassword" class="form-control" name="password" formControlName="userPassword"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-3 offset-md-4">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="remember"> Se souvenir de moi
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 right">
-                                        <a [routerLink]="['/home']">Mot de passe oublié</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-info btn-lg" (click)="onSubmit()" [disabled]="!connexionUserForm.valid">
-                                        Connexion
-                                    </button>
-                                </div><br>
-                                <div class="form-group row">
-                                    <div class="col-md-3 offset-md-4">
-                                        <div>
-                                            <label>
-                                                Pas encore membre ?
-                                            </label>
-                                        </div>
-                                    </div>
-                                  <div class="col-md-5 right">
-                                    <a [routerLink]="['/inscriptionEnt']">Je suis une entreprise</a>
-                                    <br>
-                                    <a [routerLink]="['/inscriptionProf']">Je suis un particulier</a>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center">Connectez vous à votre espace personnel</div>
+        <div class="card-body">
+          <form [formGroup]="connexionUserForm" action="" method="">
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <label class="col-md-4 col-form-label text-md-right" for="email_address">
+                    Votre adresse mail
+                  </label>
+                  <div class="col-md-6">
+                    <input autofocus class="form-control" formControlName="userEmail" id="userEmail"
+                           name="email-address"
+                           required type="text">
+                  </div>
                 </div>
+                <div class="form-group row mt-3">
+                  <label class="col-md-4 col-form-label text-md-right" for="password">
+                    Votre mot de passe
+                  </label>
+                  <div class="col-md-6">
+                    <input class="form-control" formControlName="userPassword" id="userPassword" name="password"
+                           required
+                           type="password">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-3 offset-md-4">
+                    <div class="checkbox">
+                      <label>
+                        <input name="remember" type="checkbox"> Se souvenir de moi
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-5 right">
+                    <a [routerLink]="['/home']">Mot de passe oublié</a>
+                  </div>
+                </div>
+                <div class="col-md-6 offset-md-4">
+                  <button (click)="onSubmit()" [disabled]="!connexionUserForm.valid" class="btn btn-info btn-lg"
+                          type="submit">
+                    Connexion
+                  </button>
+                </div>
+                <br>
+                <div class="form-group row">
+                  <div class="col-md-3 offset-md-4">
+                    <div>
+                      <label>
+                        Pas encore membre ?
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-5 right">
+                    <a [routerLink]="['/inscriptionEnt']">Je suis une entreprise</a>
+                    <br>
+                    <a [routerLink]="['/inscriptionProf']">Je suis un particulier</a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>

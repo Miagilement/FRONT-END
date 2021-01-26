@@ -55,7 +55,7 @@
                 <mat-form-field appearance="legacy" class="fill-width-class">
                   <mat-label>Nom entreprise</mat-label>
                   <input formControlName="nameEnterprise" id="nameEnterprise" matInput placeholder="Nom entreprise"
-                    type="text">
+                         type="text">
                 </mat-form-field>
               </div>
 
@@ -63,7 +63,7 @@
                 <mat-form-field appearance="legacy" class="fill-width-class">
                   <mat-label>Groupe</mat-label>
                   <input formControlName="groupAffiliated" id="groupAffiliated" matInput placeholder="Groupe"
-                    type="text">
+                         type="text">
                 </mat-form-field>
               </div>
 
@@ -72,7 +72,7 @@
                 <mat-form-field appearance="legacy" class="fill-width-class">
                   <mat-label>Mot de passe</mat-label>
                   <input [type]="hide ? 'password' : 'text'" formControlName="password" id="password" matInput
-                    placeholder="Mot de passe">
+                         placeholder="Mot de passe">
                   <!--                              <button (click)="hide = !hide" [attr.aria-label]="'Hide password'"-->
                   <!--                                      [attr.aria-pressed]="hide"-->
                   <!--                                      mat-icon-button matSuffix>-->
@@ -87,7 +87,7 @@
                 <mat-form-field appearance="legacy" class="fill-width-class">
                   <mat-label>Confirmer votre mot de passe</mat-label>
                   <input [type]="'password'" formControlName="pswConfirm" id="pswConfirm" matInput
-                    placeholder="Mot de passe">
+                         placeholder="Mot de passe">
                   <mat-error *ngIf="pswConfirm.invalid">{{"Mot de passe est différent"}}</mat-error>
                 </mat-form-field>
                 <!--                                <input type="password" class="form-control" placeholder="Mot de passe" id="password" formControlName="password">-->
@@ -117,7 +117,7 @@
                   <mat-form-field appearance="legacy">
                     <mat-label>Chiffre d'affaires</mat-label>
                     <input formControlName="turnOver" id="turnOver" matInput placeholder="Chiffre d'affaires"
-                      type="text">
+                           type="text">
                   </mat-form-field>
                 </div>
 
@@ -140,7 +140,7 @@
               <mat-form-field appearance="fill" class="fill-width-class">
                 <mat-label>Description</mat-label>
                 <textarea formControlName="description" id="description" matInput placeholder="Description"
-                  rows="6"></textarea>
+                          rows="6"></textarea>
               </mat-form-field>
 
             </div>
@@ -185,7 +185,7 @@
         </div>
         <div class="col text-center mt-5">
           <button (click)="addEnterprise()" [disabled]="!inscriptionsForm.valid" class="btn btn-info btn-lg"
-            type="submit">Créer ma fiche entreprise
+                  type="submit">Créer ma fiche entreprise
           </button>
         </div>
 
@@ -195,10 +195,9 @@
 </div>
 
 
-
 <!-- inscription submit ok message Modal -->
-<div class="modal fade" id="showMesssage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="showMesssage" role="dialog"
+     tabindex="-1">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -207,7 +206,7 @@
         </h5>
       </div>
       <div class="modal-footer">
-        <button type="button" [routerLink]="['/home']" class="btn btn-success" data-dismiss="modal">Ok</button>
+        <button [routerLink]="['/home']" class="btn btn-success" data-dismiss="modal" type="button">Ok</button>
       </div>
     </div>
   </div>
