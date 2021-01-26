@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Enterprise} from "../../interfaces/Enterprise";
-import { EnterpriseService } from 'src/app/services/enterprise.service';
 import {FormBuilder} from "@angular/forms";
 import {BaseResVO} from "../../interfaces/VO/res/BaseResVO";
+import { Enterprise } from 'src/app/interfaces/enterprise';
+import { EnterpriseService } from 'src/app/services/enterprise.service';
 
 @Component({
   selector: 'app-all-company-sheet',
@@ -11,22 +11,22 @@ import {BaseResVO} from "../../interfaces/VO/res/BaseResVO";
 })
 export class AllCompanySheetComponent implements OnInit {
 
-  entreprises : Enterprise[]=[];
+  enterprises : Enterprise[]=[];
 
   constructor(
     private fb : FormBuilder,
-    private entrepriseService : EnterpriseService
+    private enterpriseService : EnterpriseService
   ) { }
 
   ngOnInit(): void {
-    this.getApiEntreprise();
+    this.getApiEnterprise();
   }
 
-  getApiEntreprise():void{
-    this.entrepriseService.getEntreprise()
+  getApiEnterprise():void{
+    this.enterpriseService.getEnterprise()
       .subscribe((baseResVO : BaseResVO)=>{
         console.log(baseResVO.data);
-        this.entreprises = <Enterprise[]>baseResVO.data;
+        this.enterprises = <Enterprise[]>baseResVO.data;
       });
   }
 

@@ -1,8 +1,9 @@
-import {profile} from "../../profile";
+import { Profile } from "../../profile";
 
-export class ProfileRegisterReqVO {
+export class ProfileRegisterReqVO{
+    constructor(
+        private profile :Profile
+    ){
 
-  constructor(
-    private profile:profile
-  ) {}
+    }
 }

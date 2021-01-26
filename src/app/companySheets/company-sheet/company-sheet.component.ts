@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseResVO } from "../../interfaces/VO/res/BaseResVO";
-import { Enterprise } from "../../interfaces/Enterprise";
-import { EnterpriseService } from "../../services/enterprise.service";
 import { ActivatedRoute } from "@angular/router";
+import { Enterprise } from 'src/app/interfaces/enterprise';
+import { EnterpriseService } from 'src/app/services/enterprise.service';
 
 @Component({
   selector: 'app-company-sheet',
@@ -12,21 +12,23 @@ import { ActivatedRoute } from "@angular/router";
 export class CompanySheetComponent implements OnInit {
 
   private uid: string;
-  entreprises: Enterprise[] = [];
+  enterprise: Enterprise[] = [];
 
-  constructor(private entrepriseService: EnterpriseService, private route: ActivatedRoute) { }
+  constructor(
+    private enterpriseService: EnterpriseService, 
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getApiEntrepriseById();
+    this.getApiEnterpriseById();
   }
 
-  getApiEntrepriseById(): void {
+  getApiEnterpriseById(): void {
     this.uid = this.route.snapshot.queryParams['uid'];
     console.log(this.uid);
-    this.entrepriseService.getEntrepriseById(this.uid)
+    this.enterpriseService.getEnterpriseById(this.uid)
       .subscribe((baseResVO: BaseResVO) => {
         console.log(baseResVO.data);
-        this.entreprises = <Enterprise[]>baseResVO.data;
+        this.enterprise = <Enterprise[]>baseResVO.data;
       });
   }
 }

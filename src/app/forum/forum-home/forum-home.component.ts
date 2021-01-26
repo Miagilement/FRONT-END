@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ForumSubjects} from "../../interfaces/ForumSubjects";
+import {ForumSubject} from "../../interfaces/ForumSubject";
 import {ForumService} from 'src/app/services/forum.service';
 import {FormBuilder} from "@angular/forms";
 import {BaseResVO} from "../../interfaces/VO/res/BaseResVO";
@@ -11,7 +11,7 @@ import {BaseResVO} from "../../interfaces/VO/res/BaseResVO";
 })
 export class ForumHomeComponent implements OnInit {
 
-  forumSubjects : ForumSubjects[]=[];
+  forumSubjects : ForumSubject[]=[];
   cheminPlus:any = "../../assets/plus.png";
   constructor(
     private forumService : ForumService
@@ -25,7 +25,7 @@ export class ForumHomeComponent implements OnInit {
     this.forumService.getForumSubjects()
       .subscribe((baseResVO : BaseResVO)=>{
         console.log(baseResVO.data);
-        this.forumSubjects = <ForumSubjects[]>baseResVO.data;
+        this.forumSubjects = <ForumSubject[]>baseResVO.data;
       });
   }
 }

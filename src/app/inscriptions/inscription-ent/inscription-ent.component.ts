@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-
-import {Enterprise} from 'src/app/interfaces/Enterprise';
-import {EnterpriseService} from 'src/app/services/enterprise.service';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {Region} from "../../interfaces/Region";
 import {matchingPassword} from "../../validator/pswValidator";
 import {conditionSelected} from 'src/app/validator/conditionValidator';
+import { Enterprise } from 'src/app/interfaces/enterprise';
+import { EnterpriseService } from 'src/app/services/enterprise.service';
 
 @Component({
   selector: 'app-inscription-ent',
@@ -28,7 +27,7 @@ export class InscriptionEntComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private entrepriseService: EnterpriseService
+    private enterpriseService: EnterpriseService
   ) {
   }
 
@@ -38,7 +37,7 @@ export class InscriptionEntComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       pswConfirm: ['', Validators.required],
-      groupAffiliated:[''],
+      groupAffiliated: ['', Validators.required],
       sectorActivity: ['', Validators.required],
       region: ['', Validators.required],
       turnOver: ['', Validators.required],
@@ -58,10 +57,10 @@ export class InscriptionEntComponent implements OnInit {
 //la méthode utiliser pour ajouter une nouvelle entreprise via le formulaire d'inscription.
 
 //On fait appel au service addEntrprise qui se trouve dans service.
-  addEntreprise(): void {
+  addEnterprise(): void {
     this.loginWarningShow = false;
     this.paraDangerShow = false;
-    this.entrepriseService.addEntreprise(this.inscriptionsForm.value)
+    this.enterpriseService.addEnterprise(this.inscriptionsForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
           switch (this.info.code) {

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 // import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import {profile} from 'src/app/interfaces/profile';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import { ProfileService } from 'src/app/services/profile.service';
+import { ProfilService } from 'src/app/services/profil.service';
 import {matchingPassword} from "../../validator/pswValidator";
 import {conditionSelected} from 'src/app/validator/conditionValidator';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
+import { Profile } from 'src/app/interfaces/profile';
 
 @Component({
   selector: 'app-inscription-profil',
@@ -15,7 +15,7 @@ import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 })
 export class InscriptionProfilComponent implements OnInit {
 
-  profile: profile[] = []
+  profile: Profile[] = []
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -27,7 +27,7 @@ export class InscriptionProfilComponent implements OnInit {
 
   constructor(
     private fb : FormBuilder,
-    private profileService: ProfileService
+    private profilService: ProfilService
   ) { }
 
 
@@ -47,13 +47,13 @@ export class InscriptionProfilComponent implements OnInit {
   addProfil(): void {
     this.loginWarningShow = false;
     this.paraDangerShow = false;
-    this.profileService.addProfil(this.inscriptionsUserForm.value)
+    this.profilService.addProfil(this.inscriptionsUserForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
           console.log(this.info.code);
           switch (this.info.code) {
             case 0:
-              this.profile.push(<profile>this.info.data);
+              this.profile.push(<Profile>this.info.data);
               this.resetInscriptionForm();
               $('#showMesssage').modal('show');
             case 2:

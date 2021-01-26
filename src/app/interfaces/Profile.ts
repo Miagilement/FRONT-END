@@ -1,7 +1,7 @@
-export class profile {
-    uid : string;
-    userName : string;
-    userType : string;
-    userEmail : string;
-    userPassword : string;
+export interface Profile {
+  uid: string;
+  userName: string;
+  userType: string;
+  userEmail: string;
+  userPassword: string;
 }

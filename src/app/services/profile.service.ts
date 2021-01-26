@@ -1,31 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { profile } from '../interfaces/Profile';
 import { tap, catchError } from 'rxjs/operators';
-import { ProfileRegisterReqVO } from "../interfaces/VO/req/ProfileRegisterReqVO";
 import {BaseResVO} from "../interfaces/VO/res/BaseResVO";
+import { Profile } from '../interfaces/profile';
+import { ProfileRegisterReqVO } from '../interfaces/VO/req/ProfileRegisterReqVO';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileService {
+export class ProfilService {
   httpOptions ={
-    headers : new HttpHeaders({'Content-Type':'application/json'})
+    headers : new HttpHeaders({'Content-Type':'application/json'})  
   }
 
   constructor(private http:HttpClient) { }
 
-  addProfil(profile : profile) : Observable<BaseResVO>{
-    let particulierRegisterReqVO = new ProfileRegisterReqVO(profile);
-    console.groupCollapsed(particulierRegisterReqVO)
-    return this.http.post<BaseResVO>("/api/user/particulier/register", particulierRegisterReqVO, this.httpOptions)
+  addProfil(profil : Profile) : Observable<BaseResVO>{
+    let profileRegisterReqVO = new ProfileRegisterReqVO(profil);
+    console.groupCollapsed(profileRegisterReqVO)
+    return this.http.post<BaseResVO>("/api/user/particulier/register", profileRegisterReqVO, this.httpOptions)
     .pipe(tap((baseResVO:BaseResVO) => console.log(baseResVO)));
+
   }
 
-  getProfileById(uid: string):Observable<BaseResVO>{
-    const url = `${"/api/info/particulier/find-by-id/{uid}"}/${uid}`;
-    return this.http.post<BaseResVO>(url,null)
-      .pipe(tap(_=>console.log(`detail Profile avec uid=${uid}`)));
-  }
 }

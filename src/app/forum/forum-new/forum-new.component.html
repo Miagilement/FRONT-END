@@ -1,6 +1,6 @@
 <div class="container mt-5 mb-4">
   <div>
-    <h1>Nouveau sujet <img [src]="cheminPlus" style="height: 30px"/></h1>
+    <h1>Création d'un nouveau sujet <img [src]="cheminPlus" style="height: 30px"/></h1>
     <form [formGroup]="newSubjectForm" (ngSubmit)="addSubject()">
       <fieldset>
         <legend>Nouveau sujet</legend>
@@ -11,9 +11,26 @@
           <label for="alterEgo">Description</label>
           <angular-editor formControlName="htmlContent" [config]="editorConfig" id="text" formControlName="text"></angular-editor>
         </div>
-        <button type="submit" class="btn btn-outline-secondary">Publier</button>
-        <button type="button" class="btn btn-outline-danger" [routerLink]="['/home']">Annuler</button>
+        <button type="submit" class="btn btn-outline-secondary" [disabled]="!newSubjectForm.valid">Publier</button>
+        <button type="button" class="btn btn-outline-danger" [routerLink]="['/forum']">Annuler</button>
       </fieldset>
     </form>
+  </div>
+</div>
+
+
+<!-- inscription submit ok message Modal -->
+<div class="modal fade" id="showMesssage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">
+          Votre sujet a bien été ajouter
+        </h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" [routerLink]="['/forum']" class="btn btn-success" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
   </div>
 </div>
