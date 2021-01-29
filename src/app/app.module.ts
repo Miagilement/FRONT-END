@@ -7,7 +7,6 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {HomeComponent} from './home/home.component';
-import {InscriptionProfileComponent} from './inscriptions/inscription-profile/inscription-profile.component';
 import {InscriptionEntComponent} from './inscriptions/inscription-ent/inscription-ent.component';
 import {CompanySheetComponent} from './companySheets/company-sheet/company-sheet.component';
 import {AllCompanySheetComponent} from './companySheets/all-company-sheet/all-company-sheet.component';
@@ -26,6 +25,7 @@ import {ForumNewComponent} from './forum/forum-new/forum-new.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 
 import {AngularEditorModule} from '@kolkov/angular-editor';
+import { InscriptionUserNormalComponent } from './inscriptions/inscription-user-normal/inscription-user-normal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import {AngularEditorModule} from '@kolkov/angular-editor';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    InscriptionProfileComponent,
     InscriptionEntComponent,
     CompanySheetComponent,
     AllCompanySheetComponent,
@@ -42,7 +41,8 @@ import {AngularEditorModule} from '@kolkov/angular-editor';
     ForumHomeComponent,
     ForumDetailsComponent,
     ForumNewComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    InscriptionUserNormalComponent
   ],
   imports: [
     BrowserModule,

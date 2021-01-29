@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Profile} from '../interfaces/profile';
-import {ProfileService} from '../services/profile.service';
 import {ActivatedRoute} from '@angular/router';
+import { UserNormal } from '../interfaces/user-normal';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
+import { UserNormalService } from '../services/user-normal.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,10 +11,10 @@ import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
 })
 
 export class UserProfileComponent implements OnInit {
-  myProfile: Profile;
+  myProfile: UserNormal;
   uid: string;
 
-  constructor(private profileService: ProfileService, private route: ActivatedRoute) {
+  constructor(private profileService: UserNormalService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class UserProfileComponent implements OnInit {
     this.profileService.getProfileById(this.uid)
       .subscribe((baseResVO: BaseResVO) => {
         console.log(baseResVO.data);
-        this.myProfile = <Profile> baseResVO.data;
+        this.myProfile = <UserNormal> baseResVO.data;
       });
   }
 }

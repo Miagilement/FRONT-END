@@ -3,6 +3,7 @@ import {FormBuilder} from '@angular/forms';
 import {BaseResVO} from '../../interfaces/VO/res/BaseResVO';
 import {Enterprise} from 'src/app/interfaces/enterprise';
 import {EnterpriseService} from 'src/app/services/enterprise.service';
+import {Region} from '../../interfaces/Region';
 
 @Component({
   selector: 'app-all-company-sheet',
@@ -12,7 +13,8 @@ import {EnterpriseService} from 'src/app/services/enterprise.service';
 export class AllCompanySheetComponent implements OnInit {
 
   enterprises: Enterprise[] = [];
-
+  listRegion: Region = new Region();
+  
   constructor(
     private fb: FormBuilder,
     private enterpriseService: EnterpriseService
