@@ -5,7 +5,7 @@ import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {Region} from '../../interfaces/Region';
 import {matchingPassword} from '../../validator/pswValidator';
 import {conditionSelected} from 'src/app/validator/conditionValidator';
-import {Enterprise} from 'src/app/interfaces/enterprise';
+import {Enterprise} from 'src/app/interfaces/Enterprise';
 import {EnterpriseService} from 'src/app/services/enterprise.service';
 
 @Component({
@@ -27,8 +27,8 @@ export class InscriptionEntComponent implements OnInit {
 //récupération et traitement des données saisies par l'utilisateur.
   inscriptionsForm = this.fb.group({
       nameEnterprise: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      userEmail: ['', Validators.required],
+      userPassword: ['', Validators.required],
       pswConfirm: ['', Validators.required],
       groupAffiliated: ['', Validators.required],
       sectorActivity: ['', Validators.required],
@@ -65,7 +65,7 @@ export class InscriptionEntComponent implements OnInit {
             case 0:
               this.entreprise.push(<Enterprise> this.info.data);
               this.resetInscriptionForm();
-              $('#showMesssage').modal('show');
+              //$('#showMesssage').modal('show');
             case 2:
               this.paraDangerShow = true;
               this.errorMessage = this.info.data;

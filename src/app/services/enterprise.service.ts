@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Enterprise } from '../interfaces/enterprise';
+import { Enterprise } from '../interfaces/Enterprise';
 import { EnterpriseRegisterReqVO } from '../interfaces/VO/req/EnterpriseRegisterReqVO';
 import { BaseResVO } from '../interfaces/VO/res/BaseResVO';
 
@@ -29,7 +29,7 @@ export class EnterpriseService {
     return this.http.post<BaseResVO>(url,null)
     .pipe(tap(_=>console.log(`detail Entreprise avec id=${id}`)));
   }
-  
+
 //la méthode addEntreprise permet de rajouter une entreprise.
   addEnterprise(entreprise : Enterprise): Observable<BaseResVO>{
     let enterpriseRegisterReqVO = new EnterpriseRegisterReqVO(entreprise);

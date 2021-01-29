@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseResVO} from '../../interfaces/VO/res/BaseResVO';
 import {ActivatedRoute} from '@angular/router';
-import {Enterprise} from 'src/app/interfaces/enterprise';
+import {Enterprise} from 'src/app/interfaces/Enterprise';
 import {EnterpriseService} from 'src/app/services/enterprise.service';
 
 @Component({

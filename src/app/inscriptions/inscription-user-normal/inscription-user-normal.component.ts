@@ -1,19 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-// import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {ProfileService} from 'src/app/services/profile.service';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { UserNormal } from 'src/app/interfaces/UserNormal';
+import { BaseResVO } from 'src/app/interfaces/VO/res/BaseResVO';
+import { UserNormalService } from 'src/app/services/user-normal.service';
 import * as $ from 'jquery';
-import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
-import {Profile} from 'src/app/interfaces/profile';
 
 @Component({
-  selector: 'app-inscription-profil',
-  templateUrl: './inscription-profile.component.html',
-  styleUrls: ['./inscription-profile.component.css']
+  selector: 'app-inscription-user-normal',
+  templateUrl: './inscription-user-normal.component.html',
+  styleUrls: ['./inscription-user-normal.component.css']
 })
-export class InscriptionProfileComponent implements OnInit {
+export class InscriptionUserNormalComponent implements OnInit {
 
-  profile: Profile[] = [];
+  userNormal: UserNormal[] = [];
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -32,25 +31,25 @@ export class InscriptionProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private profileService: ProfileService
+    private userNormalService: UserNormalService
   ) {
   }
 
   ngOnInit(): void {
   }
 
-  addProfil(): void {
+  /* addProfil(): void {
     this.loginWarningShow = false;
     this.paraDangerShow = false;
-    this.profileService.addProfil(this.inscriptionsUserForm.value)
+    this.userNormalService.addProfil(this.inscriptionsUserForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
           console.log(this.info.code);
           switch (this.info.code) {
             case 0:
-              this.profile.push(<Profile> this.info.data);
+              this.userNormal.push(<UserNormal> this.info.data);
               this.resetInscriptionForm();
-              $('#showMesssage').modal('show');
+              //$('#showMesssage').modal('show');
             case 2:
               this.paraDangerShow = true;
               this.errorMessage = this.info.data;
@@ -60,7 +59,14 @@ export class InscriptionProfileComponent implements OnInit {
           }
         }
       );
-  }
+  } */
+
+    //On fait appel au service addEntrprise qui se trouve dans service.
+    addProfil(): void {
+      this.userNormalService.addProfil(this.inscriptionsUserForm.value).subscribe((data) => console.log(data));
+      console.log(this.inscriptionsUserForm.value);
+      //$('#showMesssage').modal('show');
+    }
 
   //on fait appel à cette méthode dans le addEntreprise.
   resetInscriptionForm() {

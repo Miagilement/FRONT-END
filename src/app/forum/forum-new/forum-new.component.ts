@@ -86,7 +86,7 @@ export class ForumNewComponent implements OnInit {
   addSubject(): void {
     this.forumService.addSubject(this.newSubjectForm.value).subscribe((data) => console.log(data));
     console.log(this.newSubjectForm.value);
-    $('#showMesssage').modal('show');
+    //$('#showMesssage').modal('show');
   }
 
 

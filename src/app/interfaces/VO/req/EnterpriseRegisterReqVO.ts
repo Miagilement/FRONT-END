@@ -1,4 +1,4 @@
-import {Enterprise} from '../../enterprise';
+import {Enterprise} from '../../Enterprise';
 
 export class EnterpriseRegisterReqVO {
 
