@@ -5,7 +5,7 @@ import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {Region} from '../../interfaces/Region';
 import {matchingPassword} from '../../validator/pswValidator';
 import {conditionSelected} from 'src/app/validator/conditionValidator';
-import {Enterprise} from 'src/app/interfaces/enterprise';
+import {Enterprise} from 'src/app/interfaces/Enterprise';
 import {EnterpriseService} from 'src/app/services/enterprise.service';
 
 @Component({

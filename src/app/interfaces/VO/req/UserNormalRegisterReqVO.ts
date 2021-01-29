@@ -1,4 +1,4 @@
-import { UserNormal } from "../../user-normal";
+import { UserNormal } from "../../UserNormal";
 
 export class UserNormalRegisterReqVO {
   constructor(

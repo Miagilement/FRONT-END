@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { UserNormal } from 'src/app/interfaces/user-normal';
+import { UserNormal } from 'src/app/interfaces/UserNormal';
 import { BaseResVO } from 'src/app/interfaces/VO/res/BaseResVO';
 import { UserNormalService } from 'src/app/services/user-normal.service';
 import * as $ from 'jquery';

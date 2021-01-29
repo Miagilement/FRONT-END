@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { UserNormal } from '../interfaces/user-normal';
+import { UserNormal } from '../interfaces/UserNormal';
 import { UserNormalRegisterReqVO } from '../interfaces/VO/req/UserNormalRegisterReqVO';
 import { BaseResVO } from '../interfaces/VO/res/BaseResVO';
 

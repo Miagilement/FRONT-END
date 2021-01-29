@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import { UserNormal } from '../interfaces/user-normal';
+import { UserNormal } from '../interfaces/UserNormal';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
 import { UserNormalService } from '../services/user-normal.service';
 
