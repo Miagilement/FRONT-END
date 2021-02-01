@@ -9,13 +9,13 @@ import {ForumDetailsComponent} from './forum/forum-details/forum-details.compone
 import {ForumNewComponent} from './forum/forum-new/forum-new.component';
 import {ConnexionComponent} from './connexion/connexion.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
-import { InscriptionUserNormalComponent } from './inscriptions/inscription-user-normal/inscription-user-normal.component';
+import { InscriptionIndividualComponent } from './inscriptions/inscription-individual/inscription-individual.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'connexion', component: ConnexionComponent},
   {path: 'inscriptionEnt', component: InscriptionEntComponent},
-  {path: 'inscriptionUserNormal', component: InscriptionUserNormalComponent},
+  {path: 'inscriptionUserNormal', component: InscriptionIndividualComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'companySheet', component: CompanySheetComponent},
   {path: 'allCompanySheet', component: AllCompanySheetComponent},

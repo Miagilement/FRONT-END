@@ -19,7 +19,7 @@ export class ForumNewComponent implements OnInit {
   loginWarningShow = false;
   paraDangerShow = false;
   subjects: ForumSubject[] = [];
-  cheminPlus: any = '../../assets/plus.png';
+  pathPlus: any = '../../assets/plus.png';
   //récupération et traitement des données saisies par l'utilisateur.
   newSubjectForm = this.fb.group({
     title: ['', Validators.required],
@@ -86,7 +86,7 @@ export class ForumNewComponent implements OnInit {
   addSubject(): void {
     this.forumService.addSubject(this.newSubjectForm.value).subscribe((data) => console.log(data));
     console.log(this.newSubjectForm.value);
-    //$('#showMesssage').modal('show');
+    ($('#showMesssage') as any).modal('show');
   }
 
 

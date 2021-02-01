@@ -11,7 +11,7 @@ import {BaseResVO} from '../../interfaces/VO/res/BaseResVO';
 export class ForumHomeComponent implements OnInit {
 
   forumSubjects: ForumSubject[] = [];
-  cheminPlus: any = '../../assets/plus.png';
+  pathPlus: any = '../../assets/plus.png';
 
   constructor(
     private forumService: ForumService

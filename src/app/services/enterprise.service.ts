@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Enterprise } from '../interfaces/Enterprise';
-import { EnterpriseRegisterReqVO } from '../interfaces/VO/req/EnterpriseRegisterReqVO';
+import { EnterpriseReqVO } from '../interfaces/VO/req/EnterpriseReqVO';
 import { BaseResVO } from '../interfaces/VO/res/BaseResVO';
 
 @Injectable({
@@ -32,7 +32,7 @@ export class EnterpriseService {
 
 //la méthode addEntreprise permet de rajouter une entreprise.
   addEnterprise(entreprise : Enterprise): Observable<BaseResVO>{
-    let enterpriseRegisterReqVO = new EnterpriseRegisterReqVO(entreprise);
+    let enterpriseRegisterReqVO = new EnterpriseReqVO(entreprise);
     console.log(enterpriseRegisterReqVO)
     return this.http.post<BaseResVO>("/api/user/enterprise/register", enterpriseRegisterReqVO, this.httpOptions)
     .pipe(tap((baseResVO:BaseResVO) => console.log(baseResVO)));

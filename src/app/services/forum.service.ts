@@ -28,14 +28,17 @@ export class ForumService {
     return this.http.post<BaseResVO>('/api/forum/add-forum-subject', forumRegisterReqVO, this.httpOptions)
       .pipe(tap((baseResVO: BaseResVO) => console.log(baseResVO)));
   }
-  getForumById(id: string):Observable<BaseResVO>{
+
+  getSubjectById(id: string):Observable<BaseResVO>{
     const url = `${"/api/forum/find-forum-subject-by-id"}/${id}`;
     return this.http.post<BaseResVO>(url,null)
     .pipe(tap(_=>console.log(`detail Forum avec id=${id}`)));
   }
-  getCommentSubject(id: string):Observable<BaseResVO>{
-    const url = `${"/api/forum/comment/find-comments-by-subject"}/${id}`;
+
+  getCommentBySubject(id: string):Observable<BaseResVO>{
+    const url = `${"/api/forum/comment/find-all-comments-by-subject"}/${id}`;
     return this.http.post<BaseResVO>(url,null)
     .pipe(tap(_=>console.log(`detail Comment avec id=${id}`)));
   }
+
 }

@@ -12,34 +12,35 @@ import { ForumComment } from 'src/app/interfaces/ForumComment';
 })
 export class ForumDetailsComponent implements OnInit {
   forumSubject: ForumSubject[] = [];
-  private uid: string;
+  private id: string;
   forumComment: ForumComment[]=[];
 
   constructor(
     private forumService: ForumService,
     private route: ActivatedRoute
   ) {
-    
+
   }
 
   ngOnInit(): void {
-    this.getApiForumById();
-    this.getCommentForumSubject();
+    this.getApiSubjectById();
+    this.getApiCommentBySubject();
   }
-  getApiForumById(): void {
-    this.uid = this.route.snapshot.queryParams['uid'];
-    console.log(this.uid);
-    this.forumService.getForumById(this.uid)
+
+  getApiSubjectById(): void {
+    this.id = this.route.snapshot.queryParams['id'];
+    console.log(this.id);
+    this.forumService.getSubjectById(this.id)
       .subscribe((baseResVO: BaseResVO) => {
         console.log(baseResVO.data);
         this.forumSubject = <ForumSubject[]> baseResVO.data;
       });
   }
 
-  getCommentForumSubject(): void {
-    this.uid = this.route.snapshot.queryParams['uid'];
-    console.log(this.uid);
-    this.forumService.getCommentSubject(this.uid)
+  getApiCommentBySubject(): void {
+    this.id = this.route.snapshot.queryParams['id'];
+    console.log(this.id);
+    this.forumService.getCommentBySubject(this.id)
       .subscribe((baseResVO: BaseResVO) => {
         console.log(baseResVO.data);
         this.forumComment = <ForumComment[]> baseResVO.data;

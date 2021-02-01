@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InscriptionUserNormalComponent } from './inscription-user-normal.component';
+import { InscriptionIndividualComponent } from './inscription-individual.component';
 
 describe('InscriptionUserNormalComponent', () => {
-  let component: InscriptionUserNormalComponent;
-  let fixture: ComponentFixture<InscriptionUserNormalComponent>;
+  let component: InscriptionIndividualComponent;
+  let fixture: ComponentFixture<InscriptionIndividualComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InscriptionUserNormalComponent ]
+      declarations: [ InscriptionIndividualComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InscriptionUserNormalComponent);
+    fixture = TestBed.createComponent(InscriptionIndividualComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

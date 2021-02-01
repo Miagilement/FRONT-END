@@ -24,6 +24,7 @@ export class InscriptionEntComponent implements OnInit {
   pswConfirm: AbstractControl;
   conditionSelected: AbstractControl;
   listRegion: Region = new Region();
+
 //récupération et traitement des données saisies par l'utilisateur.
   inscriptionsForm = this.fb.group({
       nameEnterprise: ['', Validators.required],
@@ -65,7 +66,7 @@ export class InscriptionEntComponent implements OnInit {
             case 0:
               this.entreprise.push(<Enterprise> this.info.data);
               this.resetInscriptionForm();
-              //$('#showMesssage').modal('show');
+              ($('#showMessage') as any).modal('show');
             case 2:
               this.paraDangerShow = true;
               this.errorMessage = this.info.data;

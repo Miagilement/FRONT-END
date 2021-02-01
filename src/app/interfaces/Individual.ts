@@ -1,4 +1,4 @@
-export interface UserNormal {
+export interface Individual {
     uid: string;
     userName: string;
     userType: string;

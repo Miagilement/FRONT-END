@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import { UserNormal } from '../interfaces/UserNormal';
+import { Individual } from '../interfaces/Individual';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
-import { UserNormalService } from '../services/user-normal.service';
+import { IndividualService } from '../services/individual.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,10 +11,10 @@ import { UserNormalService } from '../services/user-normal.service';
 })
 
 export class UserProfileComponent implements OnInit {
-  myProfile: UserNormal;
+  myProfile: Individual;
   uid: string;
 
-  constructor(private profileService: UserNormalService, private route: ActivatedRoute) {
+  constructor(private profileService: IndividualService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -24,10 +24,10 @@ export class UserProfileComponent implements OnInit {
   getApiProfileById(): void {
     this.uid = '1';                  //A update en fonction de la recuperation de l'ID via la connexion
     console.log(this.uid);
-    this.profileService.getProfileById(this.uid)
+    this.profileService.getIndividualById(this.uid)
       .subscribe((baseResVO: BaseResVO) => {
         console.log(baseResVO.data);
-        this.myProfile = <UserNormal> baseResVO.data;
+        this.myProfile = <Individual> baseResVO.data;
       });
   }
 }
