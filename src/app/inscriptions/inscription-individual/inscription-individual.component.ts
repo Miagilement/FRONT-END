@@ -4,6 +4,8 @@ import { Individual } from 'src/app/interfaces/Individual';
 import { BaseResVO } from 'src/app/interfaces/VO/res/BaseResVO';
 import { IndividualService } from 'src/app/services/individual.service';
 import * as $ from 'jquery';
+import { matchingPassword } from 'src/app/validator/pswValidator';
+import { conditionSelected } from 'src/app/validator/conditionValidator';
 
 @Component({
   selector: 'app-inscription-user-normal',
@@ -12,7 +14,7 @@ import * as $ from 'jquery';
 })
 export class InscriptionIndividualComponent implements OnInit {
 
-  userNormal: Individual[] = [];
+  individual: Individual[] = [];
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -20,39 +22,53 @@ export class InscriptionIndividualComponent implements OnInit {
   paraDangerShow = false;
   pswConfirm: AbstractControl;
   conditionSelected: AbstractControl;
-  //récupération et traitement des données saisies par l'utilisateur.
-  inscriptionsUserForm = this.fb.group({
+
+  //récupération et traitement des données saisies par l'utilisateur
+  //vérification que les données sont bien valides
+  inscriptionsIndividualForm = this.fb.group({
     userName: ['', Validators.required],
     userPassword: ['', Validators.required],
-    userPasswordConf: ['', Validators.required],
+    pswConfirm: ['', Validators.required],
     userEmail: ['', Validators.required],
     userType: ['', Validators.required],
-  });
+    conditionUser: ['', Validators.required]
+  },
+  //Vérification de l'adéquation entre mdp et confirmation de mdp (validation faite au niveau du front)
+  {validator: Validators.compose([matchingPassword(), conditionSelected()])}
+  );
+
+  
 
   constructor(
     private fb: FormBuilder,
-    private userNormalService: IndividualService
+    private individualService: IndividualService
   ) {
   }
 
   ngOnInit(): void {
+    this.pswConfirm = this.inscriptionsIndividualForm.controls['pswConfirm'];
+    this.conditionSelected = this.inscriptionsIndividualForm.controls['conditionUser'];
   }
 
-  addProfil(): void {
+  addIndividual(): void {
     this.loginWarningShow = false;
     this.paraDangerShow = false;
-    this.userNormalService.addIndividual(this.inscriptionsUserForm.value)
+    console.log(this.inscriptionsIndividualForm.value);
+    this.individualService.addIndividual(this.inscriptionsIndividualForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
           console.log(this.info.code);
           switch (this.info.code) {
+            // Si tous les champs sont valides (prédéfinit dans le back dans "ResultEnum")
             case 0:
-              this.userNormal.push(<Individual> this.info.data);
+              this.individual.push(<Individual> this.info.data);
               this.resetInscriptionForm();
               ($('#showMesssage') as any).modal('show');
+            // S'il y a une erreure de saisie
             case 2:
               this.paraDangerShow = true;
               this.errorMessage = this.info.data;
+            // Si le compte existe déjà (adresse mail déjà utilisée)
             case 6:
               this.loginWarningShow = true;
               this.errorMessage = this.info.data;
@@ -70,10 +86,11 @@ export class InscriptionIndividualComponent implements OnInit {
 
   //on fait appel à cette méthode dans le addEntreprise.
   resetInscriptionForm() {
-    this.inscriptionsUserForm.reset();
+    this.inscriptionsIndividualForm.reset();
   }
 
   onSubmit(): void {
-    console.log(this.inscriptionsUserForm.value);
+    console.log(this.inscriptionsIndividualForm.value);
   }
+
 }

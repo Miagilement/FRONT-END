@@ -1,16 +1,41 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col-12">
-        <form [formGroup]="inscriptionsUserForm">
+        <form [formGroup]="inscriptionsIndividualForm">
           <h1 class="text-info text-center">Créer votre compte personnel</h1>
-          <div class="row mt-5">
+
+          <div *ngIf="paraDangerShow">
+            <div *ngFor="let item of errorMessage" class="alert alert-danger">
+              {{item}}
+            </div>
+          </div>
+
+          <div *ngIf="loginWarningShow&&!paraDangerShow">
+            <div *ngFor="let item of errorMessage" class="alert alert-warning">
+              {{item}}<a [routerLink]="['/connexion']" type="button"> Cliquez pour se connecter</a>
+            </div>
+          </div>
+
+
+          <div class="row mt-5 justify-content-center">
             <div class="col-8">
               <div class="row">
-                <div class="col-4">
+                <div class="col-6">
                   <input class="form-control" formControlName="userName" id="userName" placeholder="Entrez votre pseudo"
                          type="text">
                 </div>
+                <div class="col-5">
+                  <div class="form-group col">
+                    <select class="form-control" formControlName="userType" id="userType" >
+                      <option value="">Je suis</option>
+                      <option value="Etudiant">Etudiant</option>
+                      <option value="Entrepreneur">Entrepreneur</option>
+                      <option value="En recherche d'emploi">En recherche d'emploi</option>
+                    </select>
+                  </div>
+                </div>
               </div>
+              
               <div class="row mt-3">
                 <div class="col">
                   <input class="form-control" formControlName="userEmail" id="userEmail"
@@ -27,14 +52,14 @@
               </div>
               <div class="row mt-3">
                 <div class="col">
-                  <input class="form-control" formControlName="userPasswordConf" id="userPasswordConf"
+                  <input class="form-control" formControlName="pswConfirm" id="pswConfirm"
                          placeholder="Confirmez votre mot de passe" type="password">
                 </div>
               </div>
 
               <div class="row mt-3">
                 <div class="col">
-                  <input class="form-check-input" id="gridCheck1" type="checkbox">
+                  <input class="form-check-input" id="gridCheck1" type="checkbox" formControlName="conditionUser">
                   <label class="form-check-label" for="gridCheck1">
                     Vous reconnaissez avoir lu et accepté <a [routerLink]="['/terms']" type="button">nos conditions générales d'utilisation</a>
                   </label>
@@ -42,21 +67,10 @@
               </div>
               <div class="row mt-1">
                 <div class="col text-center mt-5">
-                  <button (click)="addProfil()" [disabled]="!inscriptionsUserForm.valid" class="btn btn-info btn-lg"
-                          type="submit">Créer mon compte
+                  <button (click)="addIndividual()" [disabled]="!inscriptionsIndividualForm.valid" class="btn btn-info btn-lg"
+                          type="submit">Créer mon comptes
                   </button>
                 </div>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <div class="form-group col">
-
-                <label for="Je suis">Je suis</label>
-                <select class="form-control" formControlName="userType" id="userType">
-                  <option value="Etudiant">Etudiant</option>
-                  <option value="Entrepreneur">Entrepreneur</option>
-                  <option value="En recherche d'emploi">En recherche d'emploi</option>
-                </select>
               </div>
             </div>
           </div>
