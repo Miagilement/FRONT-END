@@ -10,6 +10,7 @@ import {ForumNewComponent} from './forum/forum-new/forum-new.component';
 import {ConnexionComponent} from './connexion/connexion.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import { InscriptionIndividualComponent } from './inscriptions/inscription-individual/inscription-individual.component';
+import {TermsComponent} from './terms/terms.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'forum', component: ForumHomeComponent},
   {path: 'forumDetails', component: ForumDetailsComponent},
   {path: 'forumNew', component: ForumNewComponent},
+  {path: 'terms', component: TermsComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: '**', redirectTo: 'home'}
 

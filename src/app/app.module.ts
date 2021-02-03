@@ -26,6 +26,7 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 
 import {AngularEditorModule} from '@kolkov/angular-editor';
 import { InscriptionIndividualComponent } from './inscriptions/inscription-individual/inscription-individual.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { InscriptionIndividualComponent } from './inscriptions/inscription-indiv
     ForumDetailsComponent,
     ForumNewComponent,
     UserProfileComponent,
-    InscriptionIndividualComponent
+    InscriptionIndividualComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
