@@ -5,6 +5,8 @@ import {tap} from 'rxjs/internal/operators/tap';
 import {ForumSubject} from '../interfaces/ForumSubject';
 import {ForumRegisterReqVO} from '../interfaces/VO/req/ForumSubjectReqVO';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
+import {ForumComment} from '../interfaces/ForumComment';
+import {ForumCommentReqVO} from '../interfaces/VO/req/ForumCommentReqVO';
 
 @Injectable({
   providedIn: 'root'
@@ -35,10 +37,24 @@ export class ForumService {
     .pipe(tap(_=>console.log(`detail Forum avec id=${id}`)));
   }
 
+  addComment(forumComment: ForumComment): Observable<BaseResVO> {
+    const commentRegisterReqVO = new ForumCommentReqVO(forumComment);
+    return this.http.post<BaseResVO>('/api/forum/comment/add-forum-comment', commentRegisterReqVO, this.httpOptions)
+      .pipe(tap((baseResVO: BaseResVO) => console.log(baseResVO)));
+
+  }
+
   getCommentBySubject(id: string):Observable<BaseResVO>{
     const url = `${"/api/forum/comment/find-all-comments-by-subject"}/${id}`;
     return this.http.post<BaseResVO>(url,null)
-    .pipe(tap(_=>console.log(`detail Comment avec id=${id}`)));
+      .pipe(tap((baseResVO: BaseResVO) => console.log(baseResVO)));
+  }
+
+
+  deleteCommentById(commentId: number):Observable<BaseResVO> {
+    const url = `${"/api/forum/comment/delete-forum-comment"}/${commentId}`;
+    return this.http.post<BaseResVO>(url,null)
+      .pipe(tap(_=>console.log(`suppression du commentaire =${commentId}`)));
   }
 
 }

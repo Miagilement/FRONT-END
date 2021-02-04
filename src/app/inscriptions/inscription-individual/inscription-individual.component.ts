@@ -37,7 +37,7 @@ export class InscriptionIndividualComponent implements OnInit {
   {validator: Validators.compose([matchingPassword(), conditionSelected()])}
   );
 
-  
+
 
   constructor(
     private fb: FormBuilder,
