@@ -4,6 +4,7 @@ import {BaseResVO} from '../../interfaces/VO/res/BaseResVO';
 import {Enterprise} from 'src/app/interfaces/Enterprise';
 import {EnterpriseService} from 'src/app/services/enterprise.service';
 import {Region} from '../../interfaces/Region';
+import {Sector} from '../../interfaces/Sector';
 import {BrowserModule} from '@angular/platform-browser';
 
 
@@ -17,6 +18,7 @@ export class AllCompanySheetComponent implements OnInit {
 
   enterprises: Enterprise[] = [];
   listRegion: Region = new Region();
+  listSector: Sector = new Sector();
   enterpriseForm = this.fb.group({
     region: [''],
     sector: [''],

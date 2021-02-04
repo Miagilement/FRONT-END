@@ -13,10 +13,7 @@
               <div class="col-4">
                 <select formControlName="sector" id="oCategorieRegion" name="oCategorie" class="form-control">
                   <option value="" selected>Tout les secteurs</option>
-                  <option value="ERPs">ERPs</option>
-                  <option value="conseils">Conseils</option>
-                  <option value="BI">BI</option>
-                  <option value="Réseaux informatiques">Réseaux informatiques</option>
+                  <option *ngFor='let item of listSector.listSector' [value]="item">{{item}}</option>
                 </select>
               </div>
               <div class="col-5">
@@ -37,7 +34,7 @@
 </div>
 
 <br><br>
-<div class="container col-1">
+<div class="container col-4">
 <div class="row justify-content-center">
   <hr>
   <ul class="list-group list-group-flush">

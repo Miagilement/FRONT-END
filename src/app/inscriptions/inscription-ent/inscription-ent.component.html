@@ -28,7 +28,7 @@
             </div>
             <div class="row mt-3">
             	<div class="col">
-                	<Textarea class="form-control" formControlName="description" id="description" placeholder="Description" type="text" rows="6"> </Textarea> 
+                	<Textarea class="form-control" formControlName="description" id="description" placeholder="Description" type="text" rows="6"> </Textarea>
               </div>
             </div>
             <div class="row mt-3">
@@ -40,15 +40,16 @@
                 </label>
               </div>
             </div>
+            <br>
 
-              <!-- Permet d'utiliser le contrôle des formulaires pour 
-                la validation -->                
-              <div class="g-recaptcha" 
+              <!-- Permet d'utiliser le contrôle des formulaires pour
+                la validation -->
+              <div class="g-recaptcha"
                 data-sitekey="6LdlZkgaAAAAAIyuPYvxltA8hGoGN5nFx4ztgdOw">
-              </div> 
+              </div>
 
               <!-- Clé secrète pour la communication entre le site et le service
-                 reCaptcha (back-end) " 6LdlZkgaAAAAAFwGf-jEe--9-iU-v5Eknp-HLIn9 " 
+                 reCaptcha (back-end) " 6LdlZkgaAAAAAFwGf-jEe--9-iU-v5Eknp-HLIn9 "
                 -->
 
             <div class="row mt-1">
@@ -59,7 +60,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="row-2">
             <div class="form-group col-12">
               <div class="row mt-5">
@@ -82,43 +83,28 @@
              </div>
               <div class="row mt-3">
                 <div class="col">
-                  <label for="Secteur">Secteur</label>
+                  <label for="sectorActivity">Secteur</label>
                   <select class="form-control" formControlName="sectorActivity" id="sectorActivity">
-                    <option value="ERPs">ERPs</option>
-                    <option value="B.I">B.I</option>
-                    <option value="Conseils">Conseils</option>
-                    <option value="Réseaux informatiques">Informatique</option>
-                    <option value="Autres">...</option>
-                  </select> 
+                    <option *ngFor='let item of listSector.listSector' [value]="item">{{item}}</option>
+                  </select>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col">
-                    <label for="Je suis">Ma région</label>
+                    <label for="region">Ma région</label>
                     <select class="form-control" formControlName="region" id="region">
-                          <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
-                          <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
-                          <option value="Bretagne">Bretagne</option>
-                          <option value="Centre-Val-De-Loire">Centre-Val-De-Loire</option>
-                          <option value="Corse">Corse</option>
-                          <option value="Grand-Est">Grand-Est</option>
-                          <option value="Hauts-De-France">Hauts-De-France</option>
-                          <option value="Iles-De-France">Iles-De-France</option>
-                          <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
-                          <option value="Occitanie">Occitanie</option>
-                          <option value="Pays-De-La-Loire">Pays-De-La-Loire</option>
-                          <option value="Provence-Alpes-Côtes d'Azur">Provence-Alpes-Côtes d'Azur</option>
+                      <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>
                     </select>
                 </div>
-              </div> 
+              </div>
             </div>
-          </div>    
+          </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-        
+
          <!--<h1 class="shadow-sm text-info text-center">Créer votre compte entreprise</h1>
         <div *ngIf="paraDangerShow">
           <div *ngFor="let item of errorMessage" class="alert alert-danger">
@@ -132,7 +118,6 @@
           </div>
         </div> -->
 
-       
-       
-        
-       
+
+
+
