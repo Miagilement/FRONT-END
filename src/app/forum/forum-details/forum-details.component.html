@@ -8,19 +8,16 @@
       <label class="auteur" for="start"> {{forumSubject.authorId}} </label>
       <label class="date">{{forumSubject.datePost| date: 'yyyy-MM-dd'}}</label>
       <br><br>
-      <p>Les documents retenus le sont toujours dans leur intégralité ,
-        du premier mot jusqu'au dernier . «Tout le texte, rien que le
-        texte D . Des raisons exceptionnelles (comme la nature d'une documentation donnée) nous font adopter une
-        attitude différente .
-        <br>
-      </p>
-      <div *ngFor="let Comment of forumComment" class="container mt-5">
+      <h2>{{forumSubject.text}}</h2>
+      <div *ngFor="let comment of forumComment" class="container mt-5">
         <div class="row gx-6">
           <div class="col">
             <div class="p-3 border bg-light">
-              <label>{{Comment.author_id}} </label>
-              <label>{{Comment.text}} </label>
-              <label class="date">{{Comment.dateComment| date: 'yyyy-MM-dd'}}</label>
+              <!--< label>{{comment.author_id}} </label> -->
+              <label>{{comment.text}} </label>
+              <label class="date">{{comment.dateComment| date: 'yyyy-MM-dd'}}</label>
+              
+              <button (click)="deleteComment(comment.id)">Supprimer</button>
             </div>
           </div>
         </div>
@@ -29,9 +26,17 @@
       <div class="form-group col-10">
         <h3>Ajouter un Commentaire</h3>
       </div>
-      <div class="form-floating">
-        <textarea class="form-control" placeholder="Description" id="floatingTextarea"></textarea>
-      </div>
+      <form (ngSubmit)="addComment()" [formGroup]="newCommentForm">
+        <div class="form-floating">
+          <textarea class="form-control" formControlName="text" id="text"  placeholder="Description" id="floatingTextarea"></textarea>
+        </div>
+        <div class="row" >
+          <div class="col-md-1 pull-right">
+            <button type="submit" [disabled]="!newCommentForm.valid" class="btn btn-warning" [queryParams]="{id:forumSubject.id}">Add Comment</button>
+          </div>
+        </div>
+    </form>
+     
     </fieldset>
   </div>
 </div>
