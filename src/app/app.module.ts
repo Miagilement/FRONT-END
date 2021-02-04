@@ -40,7 +40,6 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     CompanySheetComponent,
     AllCompanySheetComponent,
     ConnexionComponent,
-    AllCompanySheetComponent,
     ForumHomeComponent,
     ForumDetailsComponent,
     ForumNewComponent,

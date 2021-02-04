@@ -7,6 +7,7 @@ import {matchingPassword} from '../../validator/pswValidator';
 import {conditionSelected} from 'src/app/validator/conditionValidator';
 import {Enterprise} from 'src/app/interfaces/Enterprise';
 import {EnterpriseService} from 'src/app/services/enterprise.service';
+import {Sector} from '../../interfaces/Sector';
 
 @Component({
   selector: 'app-inscription-ent',
@@ -24,6 +25,7 @@ export class InscriptionEntComponent implements OnInit {
   pswConfirm: AbstractControl;
   conditionSelected: AbstractControl;
   listRegion: Region = new Region();
+  listSector: Sector = new Sector();
 
 //récupération et traitement des données saisies par l'utilisateur.
   inscriptionsForm = this.fb.group({
