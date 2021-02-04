@@ -5,50 +5,53 @@
 
 <div class="container">
   <div class="row justify-content-center">
-      <div class="row">
-        <form class="form-inline" action="/recherche/" method="get">
-          <fieldset>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="col-4">
-                  <select id="oCategorie" name="oCategorie" class="form-control">
-                    <option value="">Secteur</option>
-                    <option value="0">ERPs</option>
-                    <option value="1">Conseils</option>
-                    <option value="2">BI</option>
-                    <option value="3">Réseaux informatiques</option>
-                  </select>
-                </div>
-                <div class="col-5">
-                  <select id="oCategorie" name="oCategorie" class="form-control">
-                    <option value="">Région</option>
-                    <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>
-                  </select>
-                </div>
-                <div class="col-3">
-                  <button class="btn btn-primary" type="submit">Recherche</button>
-                </div>
+    <div class="row">
+      <form class="form-inline" [formGroup]="enterpriseForm">
+        <fieldset>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="col-4">
+                <select formControlName="sector" id="oCategorieRegion" name="oCategorie" class="form-control">
+                  <option value="" selected>Tout les secteurs</option>
+                  <option value="ERPs">ERPs</option>
+                  <option value="conseils">Conseils</option>
+                  <option value="BI">BI</option>
+                  <option value="Réseaux informatiques">Réseaux informatiques</option>
+                </select>
+              </div>
+              <div class="col-5">
+                <select formControlName="region" id="oCategorieSector" name="oCategorie" class="form-control">
+                  <option value="" selected>Toutes les régions</option>
+                  <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>
+                </select>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-primary" type="submit" (click)="getApiEntreprisesByAttributes()">Recherche</button>
               </div>
             </div>
-          </fieldset>
-        </form>
-      </div>
-
-      <br><br>
-      <div class="row mt-5">
-        <hr>
-        <ul class="list-group list-group-flush">
-          <li *ngFor="let enterprise of enterprises" class="list-group-item d-flex">
-            <div class="col-8">
-              {{enterprise.nameEnterprise}}
-            </div>
-            <div class="col-4" style="text-align:right">
-              <button [queryParams]="{uid:enterprise.uid}" [routerLink]="['/companySheet']"
-                class="btn btn-outline-secondary" type="button">A propos
-              </button>
-            </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </fieldset>
+      </form>
     </div>
+  </div>
 </div>
+
+<br><br>
+<div class="container col-1">
+<div class="row justify-content-center">
+  <hr>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let enterprise of enterprises" class="list-group-item d-flex">
+      <div class="col-9">
+        {{enterprise.nameEnterprise}}
+      </div>
+      <div class="col-3">
+        <button [queryParams]="{uid:enterprise.uid}" [routerLink]="['/companySheet']" class="btn btn-outline-secondary"
+                type="button">A propos
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
+

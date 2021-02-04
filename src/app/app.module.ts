@@ -38,7 +38,6 @@ import { TermsComponent } from './terms/terms.component';
     CompanySheetComponent,
     AllCompanySheetComponent,
     ConnexionComponent,
-    AllCompanySheetComponent,
     ForumHomeComponent,
     ForumDetailsComponent,
     ForumNewComponent,
