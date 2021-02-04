@@ -54,8 +54,6 @@ export class ConnexionComponent implements OnInit {
             this.roles = this.tokenStorage.getUser().roles;
             ($('#showMessage') as any).modal('show');
         }
-
-
       }
     );
   }
