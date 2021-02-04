@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <form [formGroup]="inscriptionsForm">
-        <h1 class="text-info text-center">Créer votre compte entreprise</h1>
+        <h1 class="text-info text-center">Créer votre compte personnel</h1>
 
         <div *ngIf="paraDangerShow">
           <div *ngFor="let item of errorMessage" class="alert alert-danger">
@@ -16,68 +16,59 @@
           </div>
         </div>
 
-
         <div class="row mt-5">
           <div class="col-8">
             <div class="row">
+              <div class="col-8">
+                <input class="form-control" formControlName="userEmail" id="userEmail" placeholder="mail@serveur.com" type="email">
+              </div>
+            </div>
+            <div class="row mt-3">
               <div class="col">
                 <input class="form-control" formControlName="nameEnterprise" id="nameEnterprise" placeholder="Nom de l'entreprise" type="text">
               </div>
             </div>
             <div class="row mt-3">
-		          <div class="col-8">
-                	<input class="form-control" formControlName="userEmail" id="userEmail" placeholder="Adresse mail de l'entreprise" type="email">
-		          </div>
-            </div>
-            <div class="row mt-3">
               <div class="col">
                 <input class="form-control" formControlName="userPassword" id="userPassword" placeholder="Mot de passe"
-                       	type="password">
+                       type="password">
               </div>
             </div>
             <div class="row mt-3">
               <div class="col">
-                <input class="form-control" formControlName="pswConfirm" id="pswConfirm" placeholder="Confirmez votre mot de passe" type="password" >
-              </div>
-            </div>
-            <div class="row mt-3">
-            	<div class="col">
-                	<textarea class="form-control" formControlName="description" id="description" placeholder="Description" type="text" rows="6"> </textarea>
-              </div>
-            </div>
-
-              <!-- Permet d'utiliser le contrôle des formulaires pour
-                la validation -->
-              <!-- <div class="g-recaptcha"
-                data-sitekey="6LdlZkgaAAAAAIyuPYvxltA8hGoGN5nFx4ztgdOw">
-              </div>  -->
-                	<Textarea class="form-control" formControlName="description" id="description" placeholder="Description" type="text" rows="6"> </Textarea>
+                <input class="form-control" formControlName="pswConfirm" id="pswConfirm" placeholder="Confirmez votre mot de passe" type="password" oncopy="return 			false" onpaste="return false" oncut="return false">
               </div>
             </div>
             <div class="row mt-3">
               <div class="col">
-                <input class="form-check-input" id="gridCheck1" type="checkbox">
+                <textarea class="form-control" formControlName="description" id="description" placeholder="Description" type="text" rows="6"> </textarea>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <input class="form-check-input" id="gridCheck1" type="checkbox" formControlName="conditionUser">
                 <label class="form-check-label" for="gridCheck1">
-                    Vous reconnaissez avoir lu et accepté nos <a href="https://documentcloud.adobe.com/link/track?uri=urn:aaid:scds:US:e017d371-0ed4-473c-a814-d90278ed17d2#pageNum=1">
-                    Conditions générales d'utilisation.</a>
+                  Vous reconnaissez avoir lu et accepté nos <a href="https://documentcloud.adobe.com/link/track?uri=urn:aaid:scds:US:e017d371-0ed4-473c-a814-d90278ed17d2#pageNum=1">
+                  Conditions générales d'utilisation.</a>
                 </label>
               </div>
             </div>
+            <br>
 
-              <!-- Permet d'utiliser le contrôle des formulaires pour
-                la validation -->
-              <!-- <div class="g-recaptcha"
-                data-sitekey="6LdlZkgaAAAAAIyuPYvxltA8hGoGN5nFx4ztgdOw">
-              </div>  -->
+            <!-- Permet d'utiliser le contrôle des formulaires pour
+              la validation -->
+<!--            <div class="g-recaptcha"-->
+<!--                 data-sitekey="6LdlZkgaAAAAAIyuPYvxltA8hGoGN5nFx4ztgdOw">-->
+<!--            </div>-->
 
-              <!-- Clé secrète pour la communication entre le site et le service
-                 reCaptcha (back-end) " 6LdlZkgaAAAAAFwGf-jEe--9-iU-v5Eknp-HLIn9 "
-                -->
+            <!-- Clé secrète pour la communication entre le site et le service
+               reCaptcha (back-end) " 6LdlZkgaAAAAAFwGf-jEe--9-iU-v5Eknp-HLIn9 "
+              -->
 
             <div class="row mt-1">
               <div class="col text-center mt-5">
                 <button (click)="addEnterprise()" [disabled]="!	inscriptionsForm.valid" class="btn btn-info btn-lg"
-                  	type="submit">Créer ma fiche entreprise
+                        type="submit">Créer ma fiche entreprise
                 </button>
               </div>
             </div>
@@ -99,10 +90,10 @@
               </div>
               <div class="row mt-3">
                 <div class="col">
-                   <input class="form-control" formControlName="groupAffiliated" id="groupAffiliated"
-                   	placeholder="Groupe" type="text">
+                  <input class="form-control" formControlName="groupAffiliated" id="groupAffiliated"
+                         placeholder="Groupe" type="text">
                 </div>
-             </div>
+              </div>
               <div class="row mt-3">
                 <div class="col">
                   <label for="sectorActivity">Secteur</label>
@@ -113,53 +104,22 @@
               </div>
               <div class="row mt-3">
                 <div class="col">
-                    <label for="region">Ma région</label>
-                    <select class="form-control" formControlName="region" id="region">
-                      <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>
-                    </select>
+                  <label for="region">Ma région</label>
+                  <select class="form-control" formControlName="region" id="region">
+                    <option *ngFor='let item of listRegion.listRegion' [value]="item">{{item}}</option>
+                  </select>
                 </div>
               </div>
             </div>
-<<<<<<<<< Temporary merge branch 1
           </div>
         </div>
-
-        <div class="row mt-3">
-          <div class="col">
-            <input class="form-check-input" id="gridCheck1" type="checkbox" formControlName="conditionUser">
-            <label class="form-check-label" for="gridCheck1">
-                Vous reconnaissez avoir lu et accepté nos <a [routerLink]="['/terms']" type="button">Conditions générales d'utilisation.</a>
-            </label>
-=========
->>>>>>>>> Temporary merge branch 2
-          </div>
-        </div>
-
-        <div class="row mt-1">
-          <div class="col mt-3 mb-5">
-            <button (click)="addEnterprise()" [disabled]="!inscriptionsForm.valid" class="btn btn-info btn-lg"
-                type="submit">Créer ma fiche entreprise
-            </button>
-          </div>
-        </div>
-
       </form>
     </div>
   </div>
 </div>
-<<<<<<<<< Temporary merge branch 1
-=========
-
-         <!--<h1 class="shadow-sm text-info text-center">Créer votre compte entreprise</h1>
-        <div *ngIf="paraDangerShow">
-          <div *ngFor="let item of errorMessage" class="alert alert-danger">
-            {{item}}
-          </div>
-        </div>
->>>>>>>>> Temporary merge branch 2
 
  <!-- inscription submit ok message Modal -->
- <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="showMesssage" role="dialog"
+ <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="showMessage" role="dialog"
  tabindex="-1">
 <div class="modal-dialog modal-dialog-centered" role="document">
 <div class="modal-content">
