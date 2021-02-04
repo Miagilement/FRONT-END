@@ -17,6 +17,7 @@ export class Region {
       'Provence-Alpes-Côte d\'Azur'
     ];
   }
+
 }
 
 

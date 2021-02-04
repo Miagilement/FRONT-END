@@ -1,8 +1,8 @@
 export class ForumComment {
-    id ?: number;
-    subject_id: number;
+    id : number;
+    subjectId: number;
     text : string;
-    author_id ?: string;
-    dateComment ?: Date;
-    dateLastModified ?: Date;
+    authorId : string;
+    dateComment : Date;
+    dateLastModified : Date;
 }

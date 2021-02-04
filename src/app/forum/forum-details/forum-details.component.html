@@ -1,11 +1,11 @@
 <div class="container mt-5 mb-4">
-  <div *ngIf=forumSubject class="row gx-5">
+  <div *ngIf="forumSubject" class="row gx-5">
 
     <fieldset>
       <u>
         <h2>{{forumSubject.title}}</h2>
       </u>
-      <label class="auteur" for="start"> {{forumSubject.authorId}} </label>
+      <label class="auteur" id="authorId"> {{forumSubject.authorId}} </label>
       <label class="date">{{forumSubject.datePost| date: 'yyyy-MM-dd'}}</label>
       <br><br>
       <h2>{{forumSubject.text}}</h2>
@@ -13,11 +13,10 @@
         <div class="row gx-6">
           <div class="col">
             <div class="p-3 border bg-light">
-              <!--< label>{{comment.author_id}} </label> -->
+              <label>{{comment.authorId}} </label>
               <label>{{comment.text}} </label>
               <label class="date">{{comment.dateComment| date: 'yyyy-MM-dd'}}</label>
-              
-              <button (click)="deleteComment(comment.id)">Supprimer</button>
+              <button class="btn btn-warning" (click)="deleteComment(comment.id)">Supprimer</button>
             </div>
           </div>
         </div>
@@ -32,11 +31,11 @@
         </div>
         <div class="row" >
           <div class="col-md-1 pull-right">
-            <button type="submit" [disabled]="!newCommentForm.valid" class="btn btn-warning" [queryParams]="{id:forumSubject.id}">Add Comment</button>
+            <button type="submit" [disabled]="!newCommentForm.valid" class="btn btn-warning">Add Comment</button>
           </div>
         </div>
     </form>
-     
+
     </fieldset>
   </div>
 </div>
