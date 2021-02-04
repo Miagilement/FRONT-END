@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {Component, NgModule, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import * as $ from 'jquery';
 import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {Region} from '../../interfaces/Region';
@@ -95,6 +95,5 @@ export class InscriptionEntComponent implements OnInit {
     }
     return false;
   }
-
 
 }

@@ -28,6 +28,8 @@ import {AngularEditorModule} from '@kolkov/angular-editor';
 import { InscriptionIndividualComponent } from './inscriptions/inscription-individual/inscription-individual.component';
 import { TermsComponent } from './terms/terms.component';
 
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,8 +61,12 @@ import { TermsComponent } from './terms/terms.component';
     MatListModule,
     MatIconModule,
     MatCheckboxModule,
-    AngularEditorModule
+    AngularEditorModule,
+
+    RecaptchaModule,  //C'est l'entrée principale du module recaptcha 
+    RecaptchaFormsModule, //C’est le module pour la validation de formulaire incase
   ],
+  entryComponents:[],
   providers: [],
   bootstrap: [AppComponent]
 })
