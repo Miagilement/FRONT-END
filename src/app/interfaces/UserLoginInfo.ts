@@ -1,5 +1,5 @@
 export interface UserLoginInfo {
-    userEmail:string;
+    userEmail: string;
     jwt : string;
     roles : string;
 }
