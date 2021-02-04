@@ -16,7 +16,7 @@ import {Sector} from '../../interfaces/Sector';
 })
 export class InscriptionEntComponent implements OnInit {
 
-  entreprise: Enterprise[] = [];
+  enterprise: Enterprise[] = [];
   info: BaseResVO;
   errorMessage: any;
   hide = true;
@@ -67,7 +67,7 @@ export class InscriptionEntComponent implements OnInit {
           console.log(this.inscriptionsForm);
           switch (this.info.code) {
             case 0:
-              this.entreprise.push(<Enterprise> this.info.data);
+              this.enterprise.push(<Enterprise> this.info.data);
               this.resetInscriptionForm();
               ($('#showMessage') as any).modal('show');
             case 2:

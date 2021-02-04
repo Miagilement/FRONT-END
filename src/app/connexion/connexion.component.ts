@@ -18,7 +18,11 @@ export class ConnexionComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  userloginInfo : UserLoginInfo;
+  userloginInfo : UserLoginInfo = new class implements UserLoginInfo {
+    jwt: string;
+    roles: string;
+    userEmail: string;
+  };
 
   //récupération et traitement des données saisies par l'utilisateur.
   connexionUserForm = this.fb.group({
