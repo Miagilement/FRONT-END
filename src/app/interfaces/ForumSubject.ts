@@ -5,4 +5,5 @@ export class ForumSubject {
     authorId : string;
     datePost : Date;
     dateLastModified : Date;
+    //Commit
 }
