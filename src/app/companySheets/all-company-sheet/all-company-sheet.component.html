@@ -34,21 +34,24 @@
 </div>
 
 <br><br>
-<div class="container col-4">
-<div class="row justify-content-center">
-  <hr>
-  <ul class="list-group list-group-flush">
-    <li *ngFor="let enterprise of enterprises" class="list-group-item d-flex">
-      <div class="col-9">
-        {{enterprise.nameEnterprise}}
-      </div>
-      <div class="col-3">
-        <button [queryParams]="{uid:enterprise.uid}" [routerLink]="['/companySheet']" class="btn btn-outline-secondary"
-                type="button">A propos
-        </button>
-      </div>
-    </li>
-  </ul>
+<div class="container">
+<div class="row">
+  <div class="col">
+    <hr>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let enterprise of enterprises" class="list-group-item d-flex">
+        <div class="col-9">
+          {{enterprise.nameEnterprise}}
+        </div>
+        <div class="col-3">
+          <button [queryParams]="{uid:enterprise.uid}" [routerLink]="['/companySheet']" class="btn btn-outline-secondary float-right"
+                  type="button">A propos
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
 </div>
 </div>
 
