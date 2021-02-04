@@ -62,6 +62,7 @@ export class InscriptionEntComponent implements OnInit {
     this.enterpriseService.addEnterprise(this.inscriptionsForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
+          console.log(this.inscriptionsForm);
           switch (this.info.code) {
             case 0:
               this.entreprise.push(<Enterprise> this.info.data);
@@ -82,7 +83,6 @@ export class InscriptionEntComponent implements OnInit {
   }
 
 //la méthode resetInscriptionForm permet d'effacer le contenu des champ après l'envoi des données.
-
 //on fait appel à cette méthode dans le addEntreprise.
   resetInscriptionForm() {
     this.inscriptionsForm.reset();
@@ -94,6 +94,10 @@ export class InscriptionEntComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  onSubmit(): void {
+    console.log(this.inscriptionsForm.value);
   }
 
 }
