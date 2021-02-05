@@ -19,7 +19,7 @@ export class EnterpriseService {
   constructor(private http: HttpClient) {
   }
 
-//la méthode getEntreprise qui permet de récuperer la totalité des entreprises inscrit.
+//la méthode getEntreprise qui permet de récuperer la totalité des entreprises inscrites.
   getEnterprise(): Observable<BaseResVO> {
     return this.http.post<BaseResVO>('/api/info/enterprise/find-all-enterprise', null, this.httpOptions);
   }

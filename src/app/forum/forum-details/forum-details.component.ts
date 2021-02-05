@@ -7,9 +7,6 @@ import { ForumComment } from 'src/app/interfaces/ForumComment';
 import {FormBuilder, Validators} from '@angular/forms';
 
 
-
-
-
 @Component({
   selector: 'app-forum-details',
   templateUrl: './forum-details.component.html',
