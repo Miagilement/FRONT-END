@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { Individual } from '../interfaces/Individual';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
-import { IndividualService } from '../services/individual.service';
+import {IndividualService} from '../services/individual.service';
+import {TokenStorageService} from '../services/token-storage.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   myProfile: Individual;
   uid: string;
 
-  constructor(private profileService: IndividualService, private route: ActivatedRoute) {
+  constructor(private profileService: IndividualService, private tokenStorageService: TokenStorageService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -22,7 +23,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getApiProfileById(): void {
-    this.uid = '1';                  //A update en fonction de la recuperation de l'ID via la connexion
+    this.uid = this.tokenStorageService.getUid();
     console.log(this.uid);
     this.profileService.getIndividualById(this.uid)
       .subscribe((baseResVO: BaseResVO) => {

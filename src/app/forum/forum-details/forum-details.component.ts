@@ -5,6 +5,7 @@ import { BaseResVO } from 'src/app/interfaces/VO/res/BaseResVO';
 import { ForumService } from 'src/app/services/forum.service';
 import { ForumComment } from 'src/app/interfaces/ForumComment';
 import {FormBuilder, Validators} from '@angular/forms';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ForumDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private forumService: ForumService,
     private route: ActivatedRoute,
+    private tokenStorageService: TokenStorageService
   ) {
 
   }
@@ -53,13 +55,15 @@ export class ForumDetailsComponent implements OnInit {
       });
   }
 
-
   addComment(): void {
     if (this.newCommentForm.valid) {
       let forumComment: ForumComment = new ForumComment();
       forumComment.subjectId = this.route.snapshot.queryParams['id'];
       console.log(this.route.snapshot.queryParams['id'])
+
       forumComment.text = this.newCommentForm.controls['text'].value;
+      forumComment.authorId = this.tokenStorageService.getUid();
+
        this.forumService.addComment(forumComment).subscribe((data) => {
          this.getApiCommentBySubject();
          this.newCommentForm.setValue({text: null});
