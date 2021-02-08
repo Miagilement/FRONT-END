@@ -20,10 +20,20 @@
         </div>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['/forum']" class="nav-link text-dark">Forum</a>
+        <a [routerLink]="['/forum']" class="nav-link text-dark"><i class="fas fa-globe-africa"></i> Forum</a>
       </li>
-      <li class="nav-item">
-        <a [routerLink]="['/connexion']" class="nav-link text-dark">Se Connecter</a>
+      <li *ngIf="!myProfile" class="nav-item">
+        <a [routerLink]="['/connexion']" class="nav-link text-dark"> Se Connecter </a>
+      </li>
+      <li *ngIf="myProfile" class="nav-item dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="#"
+           id="navbarDropdown" role="button"><i class="fas fa-user"></i>
+          {{myProfile.userName}}
+        </a>
+        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a [routerLink]="['/user-profile']" class="dropdown-item">Mon profil</a>
+          <a class="dropdown-item">Se déconnecter</a>
+        </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
