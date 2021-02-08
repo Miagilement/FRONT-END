@@ -12,7 +12,7 @@ export class ForumHomeComponent implements OnInit {
 
   forumSubjects: ForumSubject[] = [];
   pathPlus: any = '../../assets/plus.png';
-
+  p: number = 1;
   constructor(
     private forumService: ForumService
   ) {

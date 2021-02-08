@@ -24,11 +24,13 @@ import {ForumDetailsComponent} from './forum/forum-details/forum-details.compone
 import {ForumNewComponent} from './forum/forum-new/forum-new.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 
+
 import {AngularEditorModule} from '@kolkov/angular-editor';
 import { InscriptionIndividualComponent } from './inscriptions/inscription-individual/inscription-individual.component';
 import { TermsComponent } from './terms/terms.component';
 
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     MatIconModule,
     MatCheckboxModule,
     AngularEditorModule,
-
+    NgxPaginationModule,
     RecaptchaModule,  //C'est l'entrée principale du module recaptcha 
     RecaptchaFormsModule, //C’est le module pour la validation de formulaire incase
   ],

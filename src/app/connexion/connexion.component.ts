@@ -19,6 +19,7 @@ export class ConnexionComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   userloginInfo : UserLoginInfo = new class implements UserLoginInfo {
+    uid: string;
     jwt: string;
     roles: string;
     userEmail: string;
@@ -52,7 +53,7 @@ export class ConnexionComponent implements OnInit {
             console.log(this.userloginInfo);
             this.tokenStorage.saveToken(this.userloginInfo.jwt);
             this.tokenStorage.saveUser(this.userloginInfo.userEmail);
-
+            this.tokenStorage.saveUid(this.userloginInfo.uid)
             this.isLoginFailed = false;
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
