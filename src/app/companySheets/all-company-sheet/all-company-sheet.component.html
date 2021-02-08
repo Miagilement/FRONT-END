@@ -23,7 +23,8 @@
                 </select>
               </div>
               <div class="col-3">
-                <button class="btn btn-primary" type="submit" (click)="getApiEntreprisesByAttributes()">Recherche</button>
+                <button class="btn btn-primary" type="submit"
+                  (click)="getApiEntreprisesByAttributes()">Recherche</button>
               </div>
             </div>
           </div>
@@ -35,23 +36,25 @@
 
 <br><br>
 <div class="container">
-<div class="row">
-  <div class="col">
-    <hr>
-    <ul class="list-group list-group-flush">
-      <li *ngFor="let enterprise of enterprises" class="list-group-item d-flex">
-        <div class="col-9">
-          {{enterprise.nameEnterprise}}
-        </div>
-        <div class="col-3">
-          <button [queryParams]="{uid:enterprise.uid}" [routerLink]="['/companySheet']" class="btn btn-outline-secondary float-right"
-                  type="button">A propos
-          </button>
-        </div>
-      </li>
-    </ul>
+  <div class="row">
+    <div class="col">
+      <hr>
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let enterprise of enterprises|paginate: {id:'propertie', itemsPerPage: 5, currentPage: p }"
+          class="list-group-item d-flex">
+          <div class="col-9">
+            {{enterprise.nameEnterprise}}
+          </div>
+          <div class="col-3">
+            <button [queryParams]="{uid:enterprise.uid}" [routerLink]="['/companySheet']"
+              class="btn btn-outline-secondary float-right" type="button">A propos
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
-
+  <div class="row mt-4">
+    <pagination-controls id="propertie" (pageChange)="p=$event"></pagination-controls>
+  </div>
 </div>
-</div>
-
