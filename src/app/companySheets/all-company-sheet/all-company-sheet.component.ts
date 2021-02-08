@@ -19,6 +19,7 @@ export class AllCompanySheetComponent implements OnInit {
   enterprises: Enterprise[] = [];
   listRegion: Region = new Region();
   listSector: Sector = new Sector();
+  p: number = 1;
   enterpriseForm = this.fb.group({
     region: [''],
     sector: [''],
