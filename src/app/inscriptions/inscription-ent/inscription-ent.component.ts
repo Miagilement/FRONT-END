@@ -26,7 +26,7 @@ export class InscriptionEntComponent implements OnInit {
   conditionSelected: AbstractControl;
   listRegion: Region = new Region();
   listSector: Sector = new Sector();
-
+  email :string;
 //récupération et traitement des données saisies par l'utilisateur.
   inscriptionsForm = this.fb.group({
       nameEnterprise: ['', Validators.required],
@@ -64,6 +64,7 @@ export class InscriptionEntComponent implements OnInit {
     this.enterpriseService.addEnterprise(this.inscriptionsForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
+          this.email =this.inscriptionsForm.controls['userEmail'].value;
           console.log(this.inscriptionsForm);
           switch (this.info.code) {
             case 0:

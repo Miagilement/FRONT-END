@@ -48,7 +48,6 @@ export class ConnexionComponent implements OnInit {
   onSubmit() {
     this.authService.login(this.connexionUserForm.value).subscribe(
       (baseResVO: BaseResVO) => {
-
         switch (baseResVO.code) {
           case 0:
             this.userloginInfo = <UserLoginInfo> baseResVO.data;
