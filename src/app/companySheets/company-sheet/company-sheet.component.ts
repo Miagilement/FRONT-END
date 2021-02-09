@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Enterprise} from 'src/app/interfaces/Enterprise';
 import {EnterpriseService} from 'src/app/services/enterprise.service';
 
+
 @Component({
   selector: 'app-company-sheet',
   templateUrl: './company-sheet.component.html',
