@@ -18,6 +18,32 @@
       </div>
     </div>
   </div>
+  <br>
+  <hr>
+  <div class="col-md-12">
+    <mat-chip-list>
+      <mat-chip>ERP</mat-chip>
+      <mat-chip>Conseils</mat-chip>
+      <mat-chip color="primary" selected>B.I</mat-chip>
+      <mat-chip color="accent" selected>Réseaux Informatiques</mat-chip>
+    </mat-chip-list>
+    <br><br><br>
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let sujet of sujets" [selectable]="selectable"
+                [removable]="removable" (removed)="remove(sujet)">
+            {{sujet.name}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip> 
+        <input placeholder="Supprimer et/ou tagger un nouveau sujet..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+  <hr>
   <div class="row mt-4">
     <pagination-controls id="propertie" (pageChange)="p=$event"></pagination-controls>
   </div>

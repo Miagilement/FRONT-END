@@ -32,6 +32,8 @@ import { TermsComponent } from './terms/terms.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import {MatChipsModule} from '@angular/material/chips';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +69,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxPaginationModule,
     RecaptchaModule,  //C'est l'entrée principale du module recaptcha 
     RecaptchaFormsModule, //C’est le module pour la validation de formulaire incase
+    MatChipsModule
   ],
   entryComponents:[],
   providers: [],
