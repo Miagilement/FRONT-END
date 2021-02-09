@@ -1,41 +1,45 @@
-<div class="container mt-5 mb-4">
-  <div *ngIf="forumSubject" class="row gx-5">
-
-    <fieldset>
-      <u>
-        <h2>{{forumSubject.title}}</h2>
-      </u>
-      <label class="auteur" id="authorId"> {{forumSubject.authorId}} </label>
-      <label class="date">{{forumSubject.datePost| date: 'yyyy-MM-dd'}}</label>
-      <br><br>
-      <h2>{{forumSubject.text}}</h2>
-      <div *ngFor="let comment of forumComment;  let i=index" class="container mt-5">
-        <div class="row gx-6">
-          <div class="col">
-            <div class="p-3 border bg-light">
-              <label>{{comment.authorName}} </label>
-              <label>{{comment.text}} </label>
-              <label class="date">{{comment.dateComment| date: 'yyyy-MM-dd'}}</label>
-              <button class="btn btn-warning" (click)="deleteComment(comment.id)">Supprimer</button>
-            </div>
+<div class="container mt-5">
+  <fieldset>
+    <div *ngIf="forumSubject" class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-9">
+            <h2>{{forumSubject.title}}</h2>
+            <p class="font-weight-normal">{{forumSubject.text}}</p>
+          </div>
+          <div class="col-3">
+            <h4 class="auteur" id="authorId">Auteur : {{forumSubject.authorId}} </h4>
+            <span class="date">Date de publication : {{forumSubject.datePost| date: 'yyyy-MM-dd'}}</span>
           </div>
         </div>
       </div>
-      <br>
-      <div class="form-group col-10">
-        <h3>Ajouter un Commentaire</h3>
+    </div>
+    <hr class="mt-0 mb-5 bg-dark">
+    <div class="row" *ngFor="let comment of forumComment; let i=index">
+      <div class="col-9">
+        <h2>{{comment.authorName}}</h2>
+        <p class="font-weight-normal text-success">{{comment.text}}</p>
       </div>
+      <div class="col-3">
+        <span class="date">{{comment.dateComment| date: 'yyyy-MM-dd'}}</span>
+        <!--<button class="btn btn-warning" (click)="deleteComment(comment.id)">Supprimer</button>-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
       <form (ngSubmit)="addComment()" [formGroup]="newCommentForm">
         <div class="form-floating">
-          <textarea class="form-control" formControlName="text" id="text"  placeholder="Description" id="floatingTextarea"></textarea>
+          <textarea class="form-control" formControlName="text" id="text" placeholder="Votre commentaire ..."
+            id="floatingTextarea"></textarea>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col-md-1 pull-right">
-            <button type="submit" [disabled]="!newCommentForm.valid" class="btn btn-warning">Add Comment</button>
+            <button type="submit" [disabled]="!newCommentForm.valid" class="btn btn-outline-success pull-right">+
+              Ajouter Commentaire</button>
           </div>
         </div>
-    </form>
-
-    </fieldset>
-  </div>
+      </form>
+    </div>
+    </div>
+  </fieldset>
 </div>

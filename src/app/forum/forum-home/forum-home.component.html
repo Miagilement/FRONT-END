@@ -1,20 +1,25 @@
 <div class="container p-4">
   <hr>
-  <h1  class="text-center  ">FORUM</h1>
+  <h1 class="text-center">FORUM</h1>
   <hr>
   <button [routerLink]="['/forumNew']" type="button" class="btn btn-outline-success pull-right">+ Nouveau sujet</button>
   <br><br>
   <div class="row">
     <div class="col-md-12">
-      <div class="card mb-2" *ngFor="let forumSubject of forumSubjects|paginate: {id:'propertie', itemsPerPage: 5, currentPage: p }">
-        <div class="card-body">
-          <h3 class="card-title">{{forumSubject.title}}</h3>
-          <h4 class="card-subtitle mb-2 text-muted">Auteur : {{forumSubject.authorName}} </h4>
-          <h4 class="card-subtitle mb-2 text-muted">{{forumSubject.text}} </h4>
-          <span>Date de publication : {{forumSubject.datePost | date: 'yyyy-MM-dd'}}</span>
-          <br>
-          <button class="btn btn-primary mt-3" type="button" [routerLink]="['/forumDetails']" [queryParams]="{id:forumSubject.id}" >Plus de détails</button>
-        </div>
+      <div class="card mb-2"
+        *ngFor="let forumSubject of forumSubjects|paginate: {id:'propertie', itemsPerPage: 5, currentPage: p }">
+          <div class="card-body" [routerLink]="['/forumDetails']" [queryParams]="{id:forumSubject.id}">
+            <div class="row">
+              <div class="col-9">
+                <h2 class="card-title font-weight-bold">{{forumSubject.title}}</h2>
+                <p class="font-weight-normal">{{forumSubject.text}} </p>
+              </div>
+              <div class="col-3">
+                <h4 class="card-subtitle mb-2">Auteur : {{forumSubject.authorName}} </h4>
+                <span class="text-success">Date de publication : {{forumSubject.datePost | date: 'yyyy-MM-dd'}}</span>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
