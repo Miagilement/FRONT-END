@@ -16,7 +16,10 @@ export class ConnexionComponent implements OnInit {
 
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage = '';
+  errorMessage: string;
+  incorrectCredentials = false;
+  notConfirmedMail = false;
+  noUser = false;
   roles: string[] = [];
   userloginInfo : UserLoginInfo = new class implements UserLoginInfo {
     uid: string;
@@ -46,6 +49,9 @@ export class ConnexionComponent implements OnInit {
   }
 
   onSubmit() {
+    this.incorrectCredentials = false;
+    this.notConfirmedMail = false;
+    this.noUser = false;
     this.authService.login(this.connexionUserForm.value).subscribe(
       (baseResVO: BaseResVO) => {
         switch (baseResVO.code) {
@@ -60,6 +66,15 @@ export class ConnexionComponent implements OnInit {
             this.roles = this.tokenStorage.getUser().roles;
             ($('#showMessage') as any).modal('show');
             this.dataSharingService.isUserLoggedIn.next(true);
+          case 7:
+            this.noUser = true;
+            this.errorMessage = baseResVO.message;
+          case 8:
+            this.incorrectCredentials = true;
+            this.errorMessage = baseResVO.message;
+          case 10:
+            this.notConfirmedMail = true;
+            this.errorMessage = baseResVO.message;
         }
 
       }

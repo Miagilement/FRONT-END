@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container mt-5">
   <fieldset>
     <div *ngIf="forumSubject" class="row">
@@ -10,6 +11,28 @@
           <div class="col-3">
             <h4 class="auteur" id="authorId">Auteur : {{forumSubject.authorId}} </h4>
             <span class="date">Date de publication : {{forumSubject.datePost| date: 'yyyy-MM-dd'}}</span>
+=======
+<div class="container mt-5 mb-4">
+  <div *ngIf="forumSubject" class="row gx-5">
+
+    <fieldset>
+      <u>
+        <h2>{{forumSubject.title}}</h2>
+      </u>
+      <label class="auteur" id="authorId"> {{forumSubject.authorName}} </label>
+      <label class="date">{{forumSubject.datePost| date: 'yyyy-MM-dd'}}</label>
+      <br><br>
+      <h2>{{forumSubject.text}}</h2>
+      <div *ngFor="let comment of forumComment;  let i=index" class="container mt-5">
+        <div class="row gx-6">
+          <div class="col">
+            <div class="p-3 border bg-light">
+              <label>{{comment.authorName}} </label>
+              <label>{{comment.text}} </label>
+              <label class="date">{{comment.dateComment| date: 'yyyy-MM-dd'}}</label>
+              <button class="btn btn-warning" (click)="deleteComment(comment.id)">Supprimer</button>
+            </div>
+>>>>>>> d448220c32f424353d353fb5267229473eb68c2d
           </div>
         </div>
       </div>

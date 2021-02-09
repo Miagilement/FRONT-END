@@ -1,7 +1,7 @@
 export class BaseResVO {
   constructor(
     public code: number,
-    public message: String,
+    public message: string,
     public data: object
   ) {
   }
