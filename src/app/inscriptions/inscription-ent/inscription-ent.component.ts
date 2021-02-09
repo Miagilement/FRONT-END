@@ -53,14 +53,14 @@ export class InscriptionEntComponent implements OnInit {
   ngOnInit(): void {
     this.pswConfirm = this.inscriptionsForm.controls['pswConfirm'];
     this.conditionSelected = this.inscriptionsForm.controls['conditionUser'];
+    this.loginWarningShow = false;
+    this.paraDangerShow = false;
   }
 
 //la méthode utiliser pour ajouter une nouvelle entreprise via le formulaire d'inscription.
 
 //On fait appel au service addEntrprise qui se trouve dans service.
   addEnterprise(): void {
-    this.loginWarningShow = false;
-    this.paraDangerShow = false;
     this.enterpriseService.addEnterprise(this.inscriptionsForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
