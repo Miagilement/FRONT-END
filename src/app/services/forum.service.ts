@@ -7,6 +7,8 @@ import {ForumRegisterReqVO} from '../interfaces/VO/req/ForumSubjectReqVO';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
 import {ForumComment} from '../interfaces/ForumComment';
 import {ForumCommentReqVO} from '../interfaces/VO/req/ForumCommentReqVO';
+import {TokenStorageService} from './token-storage.service';
+import {IndividualService} from './individual.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class ForumService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
   }
 
   getForumSubjects(): Observable<BaseResVO> {
@@ -25,6 +27,7 @@ export class ForumService {
   }
 
   addSubject(forumSubject: ForumSubject): Observable<BaseResVO> {
+    forumSubject.authorId = this.tokenStorageService.getUid();
     let forumRegisterReqVO = new ForumRegisterReqVO(forumSubject);
     console.groupCollapsed(forumRegisterReqVO);
     return this.http.post<BaseResVO>('/api/forum/add-forum-subject', forumRegisterReqVO, this.httpOptions)

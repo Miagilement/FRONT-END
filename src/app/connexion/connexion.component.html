@@ -1,12 +1,27 @@
-
-
-<div class="cotainer p-5">
+<div class="container p-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
         <div class="card-header text-center"><b>Connectez vous à votre espace personnel</b></div>
         <div class="card-body">
           <form [formGroup]="connexionUserForm">
+            <div *ngIf="noUser&&!incorrectCredentials">
+              <div class="alert alert-danger">
+                {{errorMessage}}
+              </div>
+            </div>
+
+            <div *ngIf="incorrectCredentials">
+              <div class="alert alert-danger">
+                {{errorMessage}}
+              </div>
+            </div>
+
+            <div *ngIf="notConfirmedMail&&!incorrectCredentials">
+              <div class="alert alert-danger">
+                {{errorMessage}}
+              </div>
+            </div>
             <div class="row">
               <div class="col-12">
                 <div class="row">
