@@ -33,6 +33,6 @@ export class TokenStorageService {
   }
 
   public getUid() {
-    return JSON.parse(localStorage.getItem(UID_KEY));
+    return localStorage.getItem(UID_KEY);
   }
 }
