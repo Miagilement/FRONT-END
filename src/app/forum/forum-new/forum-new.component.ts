@@ -104,10 +104,10 @@ export class ForumNewComponent implements OnInit, Sujet {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   sujets: Sujet[] = [
-    {name: 'Datamining'},
+    /*{name: 'Datamining'},
     {name: 'Digitalisation'},
-    {name: 'ADSL'},
-  ];
+    {name: 'ADSL'}, */
+  ]; 
 
   add(event: MatChipInputEvent): void {
     const input = event.input;

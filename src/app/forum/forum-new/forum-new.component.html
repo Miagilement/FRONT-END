@@ -14,11 +14,11 @@
         </div>
         <br>
         <br>
-        <div class="col-md-12">
+        <div class="form-group col-10">
           <mat-form-field class="example-chip-list">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let sujet of sujets" [selectable]="selectable"
-                      [removable]="removable" (removed)="remove(sujet)">
+                      [removable]="removable" (removed)="remove(sujet)"> 
                   {{sujet.name}} 
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
               </mat-chip> 
