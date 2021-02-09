@@ -18,6 +18,10 @@ export class AuthService {
       userPassword: credentials.userPassword,
     }, this.httpOptions);
   }
+
+  logout(): Observable<any> {
+    return this.http.post("api/user/logout", null, this.httpOptions);
+  }
 //   authenticate(credentials, callback) {
 //
 //     const headers = new HttpHeaders(credentials ? {
