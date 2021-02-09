@@ -4,8 +4,8 @@ import { AuthService } from '../services/auth.service';
 import { TokenStorageService } from '../services/token-storage.service';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
 import {UserLoginInfo} from '../interfaces/UserLoginInfo';
-import {Enterprise} from '../interfaces/Enterprise';
 import * as $ from 'jquery';
+import {DataSharingService} from '../services/data-sharing.service';
 
 @Component({
   selector: 'app-connexion',
@@ -34,7 +34,8 @@ export class ConnexionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService) {
+    private tokenStorage: TokenStorageService,
+    private dataSharingService: DataSharingService) {
   }
 
   ngOnInit(): void {
@@ -43,10 +44,10 @@ export class ConnexionComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
+
   onSubmit() {
     this.authService.login(this.connexionUserForm.value).subscribe(
       (baseResVO: BaseResVO) => {
-
         switch (baseResVO.code) {
           case 0:
             this.userloginInfo = <UserLoginInfo> baseResVO.data;
@@ -58,7 +59,9 @@ export class ConnexionComponent implements OnInit {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
             ($('#showMessage') as any).modal('show');
+            this.dataSharingService.isUserLoggedIn.next(true);
         }
+
       }
     );
   }

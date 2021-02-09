@@ -22,6 +22,7 @@ export class InscriptionIndividualComponent implements OnInit {
   paraDangerShow = false;
   pswConfirm: AbstractControl;
   conditionSelected: AbstractControl;
+  email : string;
 
   //récupération et traitement des données saisies par l'utilisateur
   //vérification que les données sont bien valides
@@ -57,6 +58,7 @@ export class InscriptionIndividualComponent implements OnInit {
     this.individualService.addIndividual(this.inscriptionsIndividualForm.value)
       .subscribe(baseResVO => {
           this.info = baseResVO;
+          this.email =this.inscriptionsIndividualForm.controls['userEmail'].value;
           console.log(this.info.code);
           switch (this.info.code) {
             // Si tous les champs sont valides (prédéfinit dans le back dans "ResultEnum")

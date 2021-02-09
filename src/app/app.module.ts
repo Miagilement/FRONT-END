@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -31,6 +31,7 @@ import { TermsComponent } from './terms/terms.component';
 
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {AuthInterceptor} from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -65,11 +66,17 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatCheckboxModule,
     AngularEditorModule,
     NgxPaginationModule,
-    RecaptchaModule,  //C'est l'entrée principale du module recaptcha 
+    RecaptchaModule,  //C'est l'entrée principale du module recaptcha
     RecaptchaFormsModule, //C’est le module pour la validation de formulaire incase
   ],
   entryComponents:[],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
