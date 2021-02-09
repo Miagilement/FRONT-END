@@ -35,4 +35,11 @@ export class TokenStorageService {
   public getUid() {
     return localStorage.getItem(UID_KEY);
   }
+
+  public removeAll() {
+    localStorage.removeItem(UID_KEY);
+    localStorage.removeItem(USER_KEY);
+    localStorage.removeItem(TOKEN_KEY);
+  }
+
 }

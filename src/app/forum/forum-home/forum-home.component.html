@@ -9,7 +9,7 @@
       <div class="card mb-2" *ngFor="let forumSubject of forumSubjects|paginate: {id:'propertie', itemsPerPage: 5, currentPage: p }">
         <div class="card-body">
           <h3 class="card-title">{{forumSubject.title}}</h3>
-          <h4 class="card-subtitle mb-2 text-muted">Auteur : {{forumSubject.authorId}} </h4>
+          <h4 class="card-subtitle mb-2 text-muted">Auteur : {{forumSubject.authorName}} </h4>
           <h4 class="card-subtitle mb-2 text-muted">{{forumSubject.text}} </h4>
           <span>Date de publication : {{forumSubject.datePost | date: 'yyyy-MM-dd'}}</span>
           <br>

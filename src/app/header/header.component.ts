@@ -13,11 +13,10 @@ import {AuthService} from '../services/auth.service';
 export class HeaderComponent implements OnInit {
   myProfile: Individual;
   uid: string;
-  auth: AuthService;
 
   cheminLogo: any = '../assets/logo.png';
 
-  constructor(private profileService: IndividualService, private tokenStorageService: TokenStorageService) {
+  constructor(private profileService: IndividualService, private tokenStorageService: TokenStorageService, private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -25,10 +24,11 @@ export class HeaderComponent implements OnInit {
   }
 
   goLogout(): void{
-    this.auth.logout()
-      .subscribe((baseResVO: BaseResVO) => {
-        console.log(baseResVO.data);
-      });
+    this.auth.logout().subscribe((baseResVO: BaseResVO) => {
+      console.log(baseResVO.message);
+      this.tokenStorageService.removeAll();
+    });
+    this.ngOnInit();
   }
 
   getApiProfileById(): void {

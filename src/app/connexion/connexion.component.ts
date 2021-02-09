@@ -43,6 +43,7 @@ export class ConnexionComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
+
   onSubmit() {
     this.authService.login(this.connexionUserForm.value).subscribe(
       (baseResVO: BaseResVO) => {
