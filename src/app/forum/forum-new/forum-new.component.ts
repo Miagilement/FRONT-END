@@ -6,12 +6,21 @@ import {BaseResVO} from 'src/app/interfaces/VO/res/BaseResVO';
 import {ForumService} from 'src/app/services/forum.service';
 import * as $ from 'jquery';
 
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+
+export interface Sujet {
+  name: string;
+} 
+
 @Component({
   selector: 'app-forum-new',
   templateUrl: './forum-new.component.html',
   styleUrls: ['./forum-new.component.css']
 })
-export class ForumNewComponent implements OnInit {
+export class ForumNewComponent implements OnInit, Sujet {
+
+  name:string;
 
   info: BaseResVO;
   errorMessage: any;
@@ -89,5 +98,39 @@ export class ForumNewComponent implements OnInit {
     ($('#showMesssage') as any).modal('show');
   }
 
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  sujets: Sujet[] = [
+    {name: 'Datamining'},
+    {name: 'Digitalisation'},
+    {name: 'ADSL'},
+  ];
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our subject
+    if ((value || '').trim()) {
+      this.sujets.push({name: value.trim()});
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  //Remove a subject
+  remove(sujet: Sujet): void {
+    const index = this.sujets.indexOf(sujet);
+
+    if (index >= 0) {
+      this.sujets.splice(index, 1);
+    }
+  }
 
 }

@@ -12,6 +12,24 @@
           <angular-editor [config]="editorConfig" formControlName="htmlContent" formControlName="text"
                           id="text"></angular-editor>
         </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+          <mat-form-field class="example-chip-list">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let sujet of sujets" [selectable]="selectable"
+                      [removable]="removable" (removed)="remove(sujet)">
+                  {{sujet.name}} 
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip> 
+              <input placeholder="Ajouter un tagger pour le sujet" 
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
         <button [disabled]="!newSubjectForm.valid" class="btn btn-outline-secondary" type="submit">Publier</button>
         <button [routerLink]="['/forum']" class="btn btn-outline-danger" type="button">Annuler</button>
       </fieldset>
