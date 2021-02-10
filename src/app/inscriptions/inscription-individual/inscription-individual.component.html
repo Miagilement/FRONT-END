@@ -22,8 +22,8 @@
           <div class="col-8">
             <div class="row">
               <div class="col-6">
-                <input class="form-control" formControlName="userName" id="userName" placeholder="Entrez votre pseudo"
-                       type="text">
+                <input class="form-control" formControlName="userName" id="userName" placeholder="Entrez votre pseudo" type="text">
+                <div class="alert alert-danger" *ngIf="inscriptionsIndividualForm.controls.userName.touched && !inscriptionsIndividualForm.controls.userName.valid">Veuillez choisir un pseudo</div>
               </div>
               <div class="col-5">
                 <div class="form-group col">
@@ -39,22 +39,20 @@
 
             <div class="row mt-3">
               <div class="col">
-                <input class="form-control" formControlName="userEmail" id="userEmail"
-                       placeholder="Votre adresse email professionnelle"
-                       type="text">
+                <input class="form-control" formControlName="userEmail" id="userEmail" placeholder="Votre adresse email professionnelle" type="text">
+                <div class="alert alert-danger" *ngIf="inscriptionsIndividualForm.controls.userEmail.touched && !inscriptionsIndividualForm.controls.userEmail.valid">Veuillez entrer votre mail</div>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col">
-                <input class="form-control" formControlName="userPassword" id="userPassword"
-                       placeholder="Entrez votre mot de passe"
-                       type="password">
+                <input class="form-control" formControlName="userPassword" id="userPassword" placeholder="Entrez votre mot de passe" type="password">
+                <div class="alert alert-danger" *ngIf="inscriptionsIndividualForm.controls.userPassword.touched && !inscriptionsIndividualForm.controls.userPassword.valid">Veuillez entrer votre mot de passe</div>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col">
-                <input class="form-control" formControlName="pswConfirm" id="pswConfirm"
-                       placeholder="Confirmez votre mot de passe" type="password">
+                <input class="form-control" formControlName="pswConfirm" id="pswConfirm" placeholder="Confirmez votre mot de passe" type="password">
+                <div class="alert alert-danger" *ngIf="inscriptionsIndividualForm.controls.pswConfirm.touched && !inscriptionsIndividualForm.controls.pswConfirm.valid">Veuillez confirmer votre mot de passe</div>
               </div>
             </div>
 
