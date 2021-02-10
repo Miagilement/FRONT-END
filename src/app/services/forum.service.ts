@@ -60,4 +60,9 @@ export class ForumService {
       .pipe(tap(_=>console.log(`suppression du commentaire =${commentId}`)));
   }
 
+  getAllTags():Observable<BaseResVO> {
+    return this.http.post<BaseResVO>('/api/forum/find-all-tags',null)
+      .pipe(tap((baseResVO: BaseResVO) => console.log(baseResVO)));
+  }
+
 }

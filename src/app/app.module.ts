@@ -32,6 +32,9 @@ import { TermsComponent } from './terms/terms.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {AuthInterceptor} from './services/auth.interceptor';
+import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,8 @@ import {AuthInterceptor} from './services/auth.interceptor';
     NgxPaginationModule,
     RecaptchaModule,  //C'est l'entrée principale du module recaptcha
     RecaptchaFormsModule, //C’est le module pour la validation de formulaire incase
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   entryComponents:[],
   providers: [
@@ -75,6 +80,12 @@ import {AuthInterceptor} from './services/auth.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: MAT_CHIPS_DEFAULT_OPTIONS,
+      useValue: {
+        separatorKeyCodes: [ENTER, COMMA]
+      }
     }
   ],
   bootstrap: [AppComponent]
