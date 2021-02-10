@@ -37,14 +37,17 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input aria-label="Search" class="form-control mr-sm-2" placeholder="rechercher un sujet" #searchBox id="search-box" (input)="search(searchBox.value)">
-      <ul class="bg-white">
-        <li *ngFor="let subjectSearch of baseResVO$ | async" >
-          <a routerLink="/forum/{{subjectSearch.id}}" class="text-dark">
-            {{subjectSearch.title}}
-          </a>
-        </li>
-      </ul>
+      <div id="search-component">
+      <input aria-label="Search" class="form-control mr-sm-2" placeholder="rechercher un sujet" #searchBox id="search-box" (input)="search(searchBox.value)" [(ngModel)]="searchText" name="searchText">
+        <ul class="bg-white search-result">
+          <li *ngFor="let subjectSearch of listResultSearch" >
+            <a [routerLink]="['/forumDetails']" [queryParams]="{id:subjectSearch.id}" class="text-dark" (click)="removeSearchResult()">
+              {{subjectSearch.title}}
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </form>
   </div>
 </nav>

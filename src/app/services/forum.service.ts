@@ -39,14 +39,16 @@ export class ForumService {
     return this.http.post<BaseResVO>(url,null)
     .pipe(tap(_=>console.log(`detail Forum avec id=${id}`)));
   }
-  searchSubjectByName(title : string) : Observable<BaseResVO[]>{
+
+  searchSubjectByName(title : string) : Observable<BaseResVO>{
     if(!title.trim()){
-      return of([]);
+      return null;
     }
-    return this.http.post<BaseResVO[]>(`${"/api/forum/find-forum-subject-by-title"}/?title=${title}`,null)
+    return this.http.post<BaseResVO>(`${"/api/forum/find-forum-subject-by-title"}/${title}`,null)
     .pipe(tap(x =>
       console.log(`detail Forum avec title=${title}`)));
   }
+
   addComment(forumComment: ForumComment): Observable<BaseResVO> {
     const commentRegisterReqVO = new ForumCommentReqVO(forumComment);
     return this.http.post<BaseResVO>('/api/forum/comment/add-forum-comment', commentRegisterReqVO, this.httpOptions)

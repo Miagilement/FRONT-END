@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
 import { ForumSubject } from 'src/app/interfaces/ForumSubject';
 import { BaseResVO } from 'src/app/interfaces/VO/res/BaseResVO';
 import { ForumService } from 'src/app/services/forum.service';
 import { ForumComment } from 'src/app/interfaces/ForumComment';
 import {FormBuilder, Validators} from '@angular/forms';
 import {TokenStorageService} from '../../services/token-storage.service';
-
-
 
 
 
@@ -18,7 +16,8 @@ import {TokenStorageService} from '../../services/token-storage.service';
 })
 export class ForumDetailsComponent implements OnInit {
   forumSubject: ForumSubject;
-  private id: string;
+
+  id: string;
   forumComment: ForumComment[]=[];
 
   newCommentForm = this.fb.group({
@@ -29,15 +28,17 @@ export class ForumDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private forumService: ForumService,
     private route: ActivatedRoute,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
   ) {
-
   }
 
   ngOnInit(): void {
-    this.getApiSubjectById();
-    this.getApiCommentBySubject();
-    this.addComment();
+    this.route.queryParams.subscribe(params =>{
+      this.id = params['id'];
+      this.getApiSubjectById();
+      this.getApiCommentBySubject();
+    })
+
   }
 
   getApiSubjectById(): void {
@@ -62,7 +63,6 @@ export class ForumDetailsComponent implements OnInit {
     if (this.newCommentForm.valid) {
       let forumComment: ForumComment = new ForumComment();
       forumComment.subjectId = this.route.snapshot.queryParams['id'];
-      console.log(this.route.snapshot.queryParams['id'])
 
       forumComment.text = this.newCommentForm.controls['text'].value;
       forumComment.authorId = this.tokenStorageService.getUid();
