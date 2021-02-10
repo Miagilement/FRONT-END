@@ -22,22 +22,26 @@
             <div class="row">
               <div class="col">
                 <input class="form-control" formControlName="nameEnterprise" id="nameEnterprise" placeholder="Nom de l'entreprise" type="text">
+                <div class="alert alert-danger" *ngIf="inscriptionsForm.controls.nameEnterprise.touched && !inscriptionsForm.controls.nameEnterprise.valid">Veuillez entrer le nom de  votre entreprise</div>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-8">
                 <input class="form-control" formControlName="userEmail" id="userEmail" placeholder="Adresse mail de l'entreprise" type="email">
+                <div class="alert alert-danger" *ngIf="inscriptionsForm.controls.userEmail.touched && !inscriptionsForm.controls.userEmail.valid">Veuillez entrer votre mail professionnel</div>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col">
-                <input class="form-control" formControlName="userPassword" id="userPassword" placeholder="Mot de passe"
-                       type="password">
+                <input class="form-control" formControlName="userPassword" id="userPassword" placeholder="Mot de passe"type="password">
+                       <div class="alert alert-danger" *ngIf="inscriptionsForm.controls.userPassword.touched && !inscriptionsForm.controls.userPassword.valid">Veuillez choisir un mot de passe</div>
+
               </div>
             </div>
             <div class="row mt-3">
               <div class="col">
                 <input class="form-control" formControlName="pswConfirm" id="pswConfirm" placeholder="Confirmez votre mot de passe" type="password" >
+                <div class="alert alert-danger" *ngIf="inscriptionsForm.controls.pswConfirm.touched && !inscriptionsForm.controls.pswConfirm.valid">Veuillez confirmer votre mot de passe</div>
               </div>
             </div>
             <div class="row mt-3">
@@ -62,20 +66,21 @@
             <div class="form-group col-12">
               <div class="row mt-5">
                 <div class="col">
-                  <input class="form-control" formControlName="siret" id="siret"
-                         required placeholder="N° Siret" type="text">
+                  <input class="form-control" formControlName="siret" id="siret" required placeholder="N° Siret" type="text">
+                  <div class="alert alert-danger" *ngIf="inscriptionsForm.controls.siret.touched && !inscriptionsForm.controls.siret.valid">Veuillez entrer votre N° de siret à 14 chiffes</div>
+
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col">
-                  <input class="form-control" formControlName="turnOver" id="turnOver"
-                         required placeholder="Chiffre d'affaires" type="text">
+                  <input class="form-control" formControlName="turnOver" id="turnOver" required placeholder="Chiffre d'affaires" type="text">
+                  <div class="alert alert-danger" *ngIf="inscriptionsForm.controls.turnOver.touched && !inscriptionsForm.controls.turnOver.valid">Veuillez entrer votre chiffre d'affaires</div>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col">
-                  <input class="form-control" formControlName="groupAffiliated" id="groupAffiliated"
-                         placeholder="Groupe" type="text">
+                  <input class="form-control" formControlName="groupAffiliated" id="groupAffiliated" placeholder="Groupe" type="text">
+                  <div class="alert alert-danger" *ngIf="inscriptionsForm.controls.groupAffiliated.touched && !inscriptionsForm.controls.groupAffiliated.valid">Veuillez remplire le champs groupe</div>
                 </div>
               </div>
               <div class="row mt-3">
