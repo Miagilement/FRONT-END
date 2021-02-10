@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {tap} from 'rxjs/internal/operators/tap';
 import {ForumSubject} from '../interfaces/ForumSubject';
 import {ForumRegisterReqVO} from '../interfaces/VO/req/ForumSubjectReqVO';
@@ -39,7 +39,14 @@ export class ForumService {
     return this.http.post<BaseResVO>(url,null)
     .pipe(tap(_=>console.log(`detail Forum avec id=${id}`)));
   }
-
+  searchSubjectByName(title : string) : Observable<BaseResVO[]>{
+    if(!title.trim()){
+      return of([]);
+    }
+    return this.http.post<BaseResVO[]>(`${"/api/forum/find-forum-subject-by-title"}/?title=${title}`,null)
+    .pipe(tap(x =>
+      console.log(`detail Forum avec title=${title}`)));
+  }
   addComment(forumComment: ForumComment): Observable<BaseResVO> {
     const commentRegisterReqVO = new ForumCommentReqVO(forumComment);
     return this.http.post<BaseResVO>('/api/forum/comment/add-forum-comment', commentRegisterReqVO, this.httpOptions)
