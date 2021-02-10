@@ -9,6 +9,7 @@ import {ForumComment} from '../interfaces/ForumComment';
 import {ForumCommentReqVO} from '../interfaces/VO/req/ForumCommentReqVO';
 import {TokenStorageService} from './token-storage.service';
 import {IndividualService} from './individual.service';
+import {ForumTag} from '../interfaces/ForumTag';
 
 @Injectable({
   providedIn: 'root'
@@ -26,13 +27,14 @@ export class ForumService {
     return this.http.post<BaseResVO>('/api/forum/find-all-forum-subjects', null, this.httpOptions);
   }
 
-  addSubject(forumSubject: ForumSubject): Observable<BaseResVO> {
+  addSubject = (forumSubject: ForumSubject, listTag: ForumTag[] ): Observable<BaseResVO> => {
     forumSubject.authorId = this.tokenStorageService.getUid();
+    forumSubject.forumTagList = listTag;
     let forumRegisterReqVO = new ForumRegisterReqVO(forumSubject);
     console.groupCollapsed(forumRegisterReqVO);
     return this.http.post<BaseResVO>('/api/forum/add-forum-subject', forumRegisterReqVO, this.httpOptions)
       .pipe(tap((baseResVO: BaseResVO) => console.log(baseResVO)));
-  }
+  };
 
   getSubjectById(id: string):Observable<BaseResVO>{
     const url = `${"/api/forum/find-forum-subject-by-id"}/${id}`;

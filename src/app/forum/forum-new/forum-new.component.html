@@ -1,39 +1,75 @@
-<div class="container mt-5 mb-4">
+<div class="modal-content container mt-5 mb-4">
   <div>
     <h1>Création d'un nouveau sujet <img [src]="pathPlus" style="height: 30px"/></h1>
     <form (ngSubmit)="addSubject()" [formGroup]="newSubjectForm">
       <fieldset>
         <legend>Nouveau sujet</legend>
-        <div class="form-group col-6">
+        <div class="form-group">
           <input class="form-control" formControlName="title" id="title" placeholder="Titre du sujet" type="text">
         </div>
-        <div class="form-group col-10">
-          <label for="text">Description</label>
-          <angular-editor [config]="editorConfig" formControlName="htmlContent" formControlName="text"
-                          id="text"></angular-editor>
+
+        <div class="form-group">
+          <mat-form-field class="example-chip-list">
+            <mat-label>Add un tag</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip
+                *ngFor="let tag of tags"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="remove(tag.tagName)">
+                {{tag.tagName}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input
+                #tagInput
+                [formControl]="tagCtrl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let tag of filteredTag | async" [value]="tag">
+                {{tag}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         </div>
+
+        <div class="form-group">
+          <label for="text">Description</label>
+          <angular-editor [config]="editorConfig" formControlName="htmlContent" formControlName="text" id="text">
+          </angular-editor>
+        </div>
+
         <button [disabled]="!newSubjectForm.valid" class="btn btn-outline-secondary" type="submit">Publier</button>
-        <button [routerLink]="['/forum']" class="btn btn-outline-danger" type="button">Annuler</button>
+        <button (click)="onNoClick()" class="btn btn-outline-danger" type="button">Annuler</button>
       </fieldset>
+
+
     </form>
+
+
   </div>
 </div>
+
+
 
 
 <!-- inscription submit ok message Modal-->
-<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="showMesssage" role="dialog"
-     tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">
-          Votre sujet a bien été ajouter
-        </h5>
-      </div>
-      <div class="modal-footer">
-        <button [routerLink]="['/forum']" class="btn btn-success" data-dismiss="modal" type="button">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="showMesssage" role="dialog"-->
+<!--     tabindex="-1">-->
+<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalCenterTitle">-->
+<!--          Votre sujet a bien été ajouter-->
+<!--        </h5>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button [routerLink]="['/forum']" class="btn btn-success" data-dismiss="modal" type="button">Ok</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 

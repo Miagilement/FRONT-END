@@ -35,6 +35,7 @@ import {AuthInterceptor} from './services/auth.interceptor';
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     RecaptchaModule,  //C'est l'entrée principale du module recaptcha
     RecaptchaFormsModule, //C’est le module pour la validation de formulaire incase
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule,
   ],
   entryComponents:[],
   providers: [
@@ -86,7 +88,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
       useValue: {
         separatorKeyCodes: [ENTER, COMMA]
       }
-    }
+    },
+    {provide: MatDialogRef, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })

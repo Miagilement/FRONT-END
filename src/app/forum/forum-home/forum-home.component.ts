@@ -9,6 +9,8 @@ import {map, startWith} from 'rxjs/operators';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {ForumTag} from '../../interfaces/ForumTag';
+import {MatDialog} from '@angular/material/dialog';
+import {ForumNewComponent} from '../forum-new/forum-new.component';
 
 @Component({
   selector: 'app-forum-acceuil',
@@ -17,23 +19,23 @@ import {ForumTag} from '../../interfaces/ForumTag';
 })
 export class ForumHomeComponent implements OnInit {
 
-  visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTag: Observable<string[]>;
-  tags: string[] = [];
+  tags: ForumTag[] = [];
   tagList: string[] = [];
 
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   forumSubjects: ForumSubject[] = [];
   pathPlus: any = '../../assets/plus.png';
   p: number = 1;
   constructor(
-    private forumService: ForumService
+    private forumService: ForumService,
+    public dialog: MatDialog
   ) {
     this.filteredTag = this.tagCtrl.valueChanges.pipe(
     map((tag: string | null) => tag ? this._filter(tag) : this.tagList.slice()));
@@ -51,19 +53,26 @@ export class ForumHomeComponent implements OnInit {
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.tags.push(value.trim());
+      this.tags.push(new class implements ForumTag {
+        tagId: number;
+        tagName: string = value.trim();
+      });
     }
-
     // Reset the input value
     if (input) {
       input.value = '';
     }
-
     this.tagCtrl.setValue(null);
   }
 
-  remove(tag: string): void {
-    const index = this.tags.indexOf(tag);
+  remove(tagName: string): void {
+    let index: number;
+    this.tags.forEach((tag) => {
+      if(tag.tagName === tagName){
+        index = this.tags.indexOf(tag);
+      }
+    })
+
 
     if (index >= 0) {
       this.tags.splice(index, 1);
@@ -71,8 +80,11 @@ export class ForumHomeComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
+    this.tags.push(new class implements ForumTag {
+      tagId: number;
+      tagName: string = event.option.viewValue;
+    });
+    this.tagInput.nativeElement.value = '';
     this.tagCtrl.setValue(null);
   }
 
@@ -94,5 +106,14 @@ export class ForumHomeComponent implements OnInit {
         let tags:ForumTag[] = <ForumTag[]>baseResVO.data;
         tags.forEach(tag=>this.tagList.push(tag.tagName));
       });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ForumNewComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getApiForumSubjects();
+    });
   }
 }

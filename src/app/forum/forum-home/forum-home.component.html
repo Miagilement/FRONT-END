@@ -2,7 +2,7 @@
   <hr>
   <h1  class="text-center">FORUM</h1>
   <hr>
-  <button [routerLink]="['/forumNew']" type="button" class="btn btn-outline-success pull-right">+ Nouveau sujet</button>
+  <button (click)="openDialog()"  type="button" class="btn btn-outline-success pull-right">+ Nouveau sujet</button>
   <br><br>
   <!--  Utilise Angular materiel pour realiser tag-->
   <div class="row col-md-12">
@@ -13,12 +13,12 @@
           *ngFor="let tag of tags"
           [selectable]="selectable"
           [removable]="removable"
-          (removed)="remove(tag)">
-          {{tag}}
+          (removed)="remove(tag.tagName)">
+          {{tag.tagName}}
           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
         <input
-          #fruitInput
+          #tagInput
           [formControl]="tagCtrl"
           [matAutocomplete]="auto"
           [matChipInputFor]="chipList"
