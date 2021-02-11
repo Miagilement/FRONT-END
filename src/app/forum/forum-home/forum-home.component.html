@@ -27,7 +27,7 @@
       </mat-chip-list>
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
         <mat-option *ngFor="let tag of filteredTag | async" [value]="tag">
-          {{tag}}
+          {{tag.tagName}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ForumSubject} from '../../interfaces/ForumSubject';
 import {ForumService} from 'src/app/services/forum.service';
 import {BaseResVO} from '../../interfaces/VO/res/BaseResVO';
@@ -23,9 +23,9 @@ export class ForumHomeComponent implements OnInit {
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
-  filteredTag: Observable<string[]>;
-  tags: ForumTag[] = [];
-  tagList: string[] = [];
+  filteredTag: Observable<ForumTag[]>;
+  @Input() tags: ForumTag[] = [];
+  tagList: ForumTag[] = [];
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -42,6 +42,7 @@ export class ForumHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.filteredTag.subscribe(value => this.findApiSubjectByTags())
     this.getApiForumSubjects();
     this.getApiForumTag();
 
@@ -50,7 +51,6 @@ export class ForumHomeComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
-
     // Add our fruit
     if ((value || '').trim()) {
       this.tags.push(new class implements ForumTag {
@@ -80,17 +80,13 @@ export class ForumHomeComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(new class implements ForumTag {
-      tagId: number;
-      tagName: string = event.option.viewValue;
-    });
+    this.tags.push(event.option.value);
     this.tagInput.nativeElement.value = '';
     this.tagCtrl.setValue(null);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.tagList.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
+  private _filter(value: string): ForumTag[] {
+    return this.tagList.filter(tag => tag.tagName.toLowerCase().indexOf(value) === 0);
   }
 
   getApiForumSubjects(): void {
@@ -104,7 +100,7 @@ export class ForumHomeComponent implements OnInit {
     this.forumService.getAllTags()
       .subscribe((baseResVO: BaseResVO) => {
         let tags:ForumTag[] = <ForumTag[]>baseResVO.data;
-        tags.forEach(tag=>this.tagList.push(tag.tagName));
+        tags.forEach(tag=>this.tagList.push(tag));
       });
   }
 
@@ -115,5 +111,11 @@ export class ForumHomeComponent implements OnInit {
       console.log('The dialog was closed');
       this.getApiForumSubjects();
     });
+  }
+
+  findApiSubjectByTags() :void {
+    this.forumService.findByTagList(this.tags).subscribe((baseResVO: BaseResVO) => {
+      this.forumSubjects = <ForumSubject[]> baseResVO.data;
+    })
   }
 }

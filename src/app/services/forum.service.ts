@@ -8,8 +8,8 @@ import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
 import {ForumComment} from '../interfaces/ForumComment';
 import {ForumCommentReqVO} from '../interfaces/VO/req/ForumCommentReqVO';
 import {TokenStorageService} from './token-storage.service';
-import {IndividualService} from './individual.service';
 import {ForumTag} from '../interfaces/ForumTag';
+import {TagReqVO} from '../interfaces/VO/req/TagReqVO';
 
 @Injectable({
   providedIn: 'root'
@@ -67,4 +67,8 @@ export class ForumService {
       .pipe(tap((baseResVO: BaseResVO) => console.log(baseResVO)));
   }
 
+  findByTagList(tagList: ForumTag[]):Observable<BaseResVO> {
+    return this.http.post<BaseResVO>('/api/forum/find-by-tags',new TagReqVO(tagList))
+      .pipe(tap((baseResVO: BaseResVO) => console.log(baseResVO)));
+  }
 }

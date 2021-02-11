@@ -24,9 +24,9 @@ export class ForumNewComponent implements OnInit {
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
-  filteredTag: Observable<string[]>;
+  filteredTag: Observable<ForumTag[]>;
   tags: ForumTag[] = [];
-  tagList: string[] = [];
+  tagList: ForumTag[] = [];
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -152,10 +152,7 @@ export class ForumNewComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(new class implements ForumTag {
-      tagId: number;
-      tagName: string = event.option.viewValue;
-    });
+    this.tags.push(event.option.value);
     this.tagInput.nativeElement.value = '';
     this.tagCtrl.setValue(null);
   }
@@ -164,12 +161,11 @@ export class ForumNewComponent implements OnInit {
     this.forumService.getAllTags()
       .subscribe((baseResVO: BaseResVO) => {
         let tags: ForumTag[] = <ForumTag[]> baseResVO.data;
-        tags.forEach(tag => this.tagList.push(tag.tagName));
+        tags.forEach(tag => this.tagList.push(tag));
       });
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.tagList.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
+  private _filter(value: string): ForumTag[] {
+    return this.tagList.filter(tag => tag.tagName.toLowerCase().indexOf(value) === 0);
   }
 }
