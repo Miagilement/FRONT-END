@@ -1,10 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BaseResVO} from '../interfaces/VO/res/BaseResVO';
 import {Individual} from '../interfaces/Individual';
 import {IndividualService} from '../services/individual.service';
 import {TokenStorageService} from '../services/token-storage.service';
 import {AuthService} from '../services/auth.service';
 import {DataSharingService} from '../services/data-sharing.service';
+import { Observable, Subject } from 'rxjs';
+import { ForumService } from '../services/forum.service';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import {ForumSubject} from '../interfaces/ForumSubject';
+
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +18,25 @@ import {DataSharingService} from '../services/data-sharing.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+   //search implement
+   @Input()baseResVO$ : Observable<BaseResVO>;
+   private searchTerms = new Subject<string>();
+
+   searchText:string;
   userName : string;
   uid: string;
   isUserLoggedIn: boolean;
+  listResultSearch: ForumSubject[];
 
   cheminLogo: any = '../assets/logo.png';
 
-  constructor(private profileService: IndividualService, private tokenStorageService: TokenStorageService, private auth: AuthService, private dataSharingService: DataSharingService) {
+  constructor(
+    private profileService: IndividualService,
+    private tokenStorageService: TokenStorageService,
+    private auth: AuthService,
+    private dataSharingService: DataSharingService,
+    private forumService: ForumService )
+    {
     this.dataSharingService.isUserLoggedIn.subscribe(value => {
       this.profileService.getIndividualById(this.tokenStorageService.getUid()).subscribe( baseResVO=> {
           let myProfile:Individual = <Individual> baseResVO.data;
@@ -31,11 +49,29 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.baseResVO$ = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
+
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+
+      // switch to new search observable each time the term changes
+      switchMap((title: string) => this.forumService.searchSubjectByName(title)),
+    );
+
+    this.baseResVO$.subscribe((baseResVO: BaseResVO) => {
+      console.log(baseResVO.message);
+      this.listResultSearch = <ForumSubject[]> baseResVO.data;
+    })
+  }
+
+  search(title:string):void{
+    this.searchTerms.next(title);
   }
 
   goLogout(): void{
     this.auth.logout().subscribe((baseResVO: BaseResVO) => {
-      console.log(baseResVO.message);
       this.tokenStorageService.removeAll();
       this.dataSharingService.isUserLoggedIn.next(false);
     });
@@ -51,4 +87,10 @@ export class HeaderComponent implements OnInit {
   //       this.myProfile = <Individual> baseResVO.data;
   //     });
   // }
+
+  removeSearchResult():void {
+    this.ngOnInit();
+    this.searchText='';
+    this.listResultSearch = [];
+  }
 }
