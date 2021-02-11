@@ -24,8 +24,10 @@ export class ForumHomeComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTag: Observable<ForumTag[]>;
-  @Input() tags: ForumTag[] = [];
+  tags: ForumTag[] = [];
+  tagsChange : Observable<ForumTag[]>;
   tagList: ForumTag[] = [];
+  differ: any;
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -45,7 +47,6 @@ export class ForumHomeComponent implements OnInit {
     this.filteredTag.subscribe(value => this.findApiSubjectByTags())
     this.getApiForumSubjects();
     this.getApiForumTag();
-
   }
 
   add(event: MatChipInputEvent): void {
@@ -77,6 +78,7 @@ export class ForumHomeComponent implements OnInit {
     if (index >= 0) {
       this.tags.splice(index, 1);
     }
+
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
@@ -106,7 +108,6 @@ export class ForumHomeComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ForumNewComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.getApiForumSubjects();
