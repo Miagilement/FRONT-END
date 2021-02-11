@@ -31,7 +31,7 @@ import { TermsComponent } from './terms/terms.component';
 
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {AuthInterceptor} from './services/auth.interceptor';
+import {AuthInterceptor, authInterceptorProviders} from './services/auth.interceptor';
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -78,11 +78,7 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef} from '@angula
   ],
   entryComponents:[],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
+    authInterceptorProviders,
     {
       provide: MAT_CHIPS_DEFAULT_OPTIONS,
       useValue: {
