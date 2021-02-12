@@ -2,7 +2,7 @@
   <hr>
   <h1  class="text-center">FORUM</h1>
   <hr>
-  <button [routerLink]="['/forumNew']" type="button" class="btn btn-outline-success pull-right">+ Nouveau sujet</button>
+  <button (click)="openDialog()"  type="button" class="btn btn-outline-success pull-right">+ Nouveau sujet</button>
   <br><br>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button class="btn btn-primary me-md-2" type="button">Mes publications</button></div><br>
@@ -15,12 +15,12 @@
           *ngFor="let tag of tags"
           [selectable]="selectable"
           [removable]="removable"
-          (removed)="remove(tag)">
-          {{tag}}
+          (removed)="remove(tag.tagName)">
+          {{tag.tagName}}
           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
         <input
-          #fruitInput
+          #tagInput
           [formControl]="tagCtrl"
           [matAutocomplete]="auto"
           [matChipInputFor]="chipList"
@@ -29,7 +29,7 @@
       </mat-chip-list>
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
         <mat-option *ngFor="let tag of filteredTag | async" [value]="tag">
-          {{tag}}
+          {{tag.tagName}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

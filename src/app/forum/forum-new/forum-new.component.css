@@ -14,16 +14,15 @@ legend {
 }
 
 /* Forms --------------------------------------------------------------------------------------- */
-form input {
-  margin: 3px 3px 0px 0px;
-  border: 1px #999 solid;
-}
-
 #text {
-  height: 500px;
+  height: 800px;
 }
 
 button {
   margin: 15px 15px 0px 0px;
   width: 300px;
+}
+
+.example-chip-list {
+  width: 100%;
 }

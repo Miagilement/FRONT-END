@@ -35,7 +35,6 @@ import {AuthInterceptor} from './services/auth.interceptor';
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { ForumPersoComponent } from './forum/forum-home/forum-perso/forum-perso.component';
 
 @NgModule({
   declarations: [
@@ -74,21 +73,19 @@ import { ForumPersoComponent } from './forum/forum-home/forum-perso/forum-perso.
     RecaptchaModule,  //C'est l'entrée principale du module recaptcha
     RecaptchaFormsModule, //C’est le module pour la validation de formulaire incase
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule,
   ],
   entryComponents:[],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
+    authInterceptorProviders,
     {
       provide: MAT_CHIPS_DEFAULT_OPTIONS,
       useValue: {
         separatorKeyCodes: [ENTER, COMMA]
       }
-    }
+    },
+    {provide: MatDialogRef, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })
