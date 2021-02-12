@@ -22,6 +22,13 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post("api/user/logout", null, this.httpOptions);
   }
+
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('auth-uid');      // Check whether the token is expired and return     // true or false//
+    return !!token;                                   // (will return either true or false based on the token availability)
+    }
+
 //   authenticate(credentials, callback) {
 //
 //     const headers = new HttpHeaders(credentials ? {

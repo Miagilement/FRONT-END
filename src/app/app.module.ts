@@ -35,6 +35,7 @@ import {AuthInterceptor} from './services/auth.interceptor';
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ForumPersoComponent } from './forum/forum-home/forum-perso/forum-perso.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ForumNewComponent,
     UserProfileComponent,
     InscriptionIndividualComponent,
-    TermsComponent
+    TermsComponent,
+    ForumPersoComponent
   ],
   imports: [
     BrowserModule,

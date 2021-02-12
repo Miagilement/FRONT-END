@@ -11,6 +11,7 @@ import {ConnexionComponent} from './connexion/connexion.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import { InscriptionIndividualComponent } from './inscriptions/inscription-individual/inscription-individual.component';
 import {TermsComponent} from './terms/terms.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,11 +19,11 @@ const routes: Routes = [
   {path: 'inscriptionEnt', component: InscriptionEntComponent},
   {path: 'inscriptionUserNormal', component: InscriptionIndividualComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'companySheet', component: CompanySheetComponent},
+  {path: 'companySheet', canActivate: [AuthGuardService], component: CompanySheetComponent},
   {path: 'allCompanySheet', component: AllCompanySheetComponent},
   {path: 'forum', component: ForumHomeComponent},
-  {path: 'forumDetails', component: ForumDetailsComponent},
-  {path: 'forumNew', component: ForumNewComponent},
+  {path: 'forumDetails', canActivate: [AuthGuardService], component: ForumDetailsComponent},
+  {path: 'forumNew', canActivate: [AuthGuardService], component: ForumNewComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: '**', redirectTo: 'home'}
